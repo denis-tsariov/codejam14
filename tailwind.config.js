@@ -1,6 +1,10 @@
 /** @type {import('tailwindcss').Config} */
 module.exports = {
-  content: ["./app/**/*.{js,jsx,ts,tsx}"],
+  content: [
+    "./App.{js,jsx,ts,tsx}",
+    "./screens/**/*.{js,jsx,ts,tsx}",
+    "./components/**/*.{js,jsx,ts,tsx}",
+  ],
   presets: [require("nativewind/preset")],
   theme: {
     extend: {
@@ -10,6 +14,9 @@ module.exports = {
         'button-bg': '#5e4020',
         'accent': '#2d4d14',
       },
+      space:{
+        "5/6": "83.33%"
+      }
     },
   },
   plugins: [],
