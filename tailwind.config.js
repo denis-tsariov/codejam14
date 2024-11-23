@@ -9,16 +9,18 @@ module.exports = {
   theme: {
     extend: {
       colors: {
-        'primary': '#f2e3ce',
-        'background': '#f0d2a8',
-        'button-bg': '#5e4020',
-        'accent': '#2d4d14',
+        primary: "#f2e3ce",
+        background: "#f0d2a8",
+        "button-bg": "#5e4020",
+        accent: "#2d4d14",
       },
-      space:{
-        "5/6": "83.33%"
-      }
+      space: {
+        "5/6": "83.33%",
+      },
+      inset: {
+        "4/5": "80%",
+      },
     },
   },
   plugins: [],
-}
-
+};
