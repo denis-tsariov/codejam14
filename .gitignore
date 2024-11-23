@@ -36,6 +36,7 @@ yarn-error.*
 *.tsbuildinfo
 
 .env
+env
 bun.lockb
 
 vb.sqlite3
