@@ -8,6 +8,14 @@ urlpatterns = [
         name="all-list"
     ),
     path(
+        "user/", 
+        views.UserList.as_view(),
+        name="user-list-create"
+    ),
+    path('user/search/', 
+         views.search_users, 
+         name='search-users'),
+    path(
         "restaurants/", 
          views.RestaurantsListCreate.as_view(), 
          name="restaurants-view-create"

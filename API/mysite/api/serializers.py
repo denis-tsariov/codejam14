@@ -10,7 +10,7 @@ class RestaurantsSerializer(serializers.ModelSerializer):
 class MapsSerializer(serializers.ModelSerializer):
     class Meta:
         model = Maps
-        fields = ["id", "listname", "restos", "user_id", "image_url"] 
+        fields = ["id", "listname", "restos", "user_id"] 
 
 class UserSerializer(serializers.ModelSerializer):
     class Meta(object):

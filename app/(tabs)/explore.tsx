@@ -1,5 +1,10 @@
 import { ThemedText } from '@/components/ThemedText';
-import { StyleSheet, Image, Platform, View, Text } from 'react-native';
+import { StyleSheet, Image, Platform, View, Text, FlatList, TouchableOpacity } from 'react-native';
+import React, { useState, useEffect } from "react";
+// import { Searchbar } from "react-native-paper";
+// import axios from "axios";
+
+const BASE_URL = "http://127.0.0.1:8000";
 
 export default function TabTwoScreen() {
   return (
@@ -8,3 +13,4 @@ export default function TabTwoScreen() {
     </View>
   );
 }
+

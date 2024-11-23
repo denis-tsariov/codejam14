@@ -91,7 +91,7 @@ export const addMapRecord = async (data) => {
 // Function to get common restaurants for two users
 export const getCommonRestaurants = async (user1_id, user2_id) => {
     try {
-        const response = await axios.get(`${BASE_URL}/common_restaurants/`, {
+        const response = await axios.get(`${BASE_URL}/maps/common_restaurants/`, {
             params: { user1_id, user2_id }
         });
         return response.data;
@@ -114,6 +114,23 @@ export const getRestaurantsForUser = async (user_id) => {
     }
 };
 
+// function to return the list of users
+export const getUsers = async () => {
+    return await fetchData('user');
+  }
+
+// function to search for a user by username
+export const getUserByUsername = async (username) => {
+    try {
+        const response = await axios.get(`${BASE_URL}/user/search/`, {
+            params: { username }
+        });
+        return response.data;
+    } catch (error) {
+        console.error("Error fetching user by username:", error);
+        throw error;
+    }
+};
 
 // export all functions as a module
 export default {
@@ -125,7 +142,9 @@ export default {
     updateMapRecord,
     deleteMapRecord, 
     getCommonRestaurants, 
-    getRestaurantsForUser
+    getRestaurantsForUser, 
+    getUsers, 
+    getUserByUsername
   };
 
 

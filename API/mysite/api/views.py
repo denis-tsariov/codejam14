@@ -111,6 +111,38 @@ class MapsUserList(APIView):
         # Serialize the data
         serializer = RestaurantsSerializer(restaurants, many=True)
         return Response(serializer.data, status=status.HTTP_200_OK)
+    
+class UserList(generics.ListCreateAPIView):
+    queryset = User.objects.all()
+    serializer_class = UserSerializer
+
+    def delete(self, request, *args, **kwargs):
+        User.objects.all().delete()
+        return Response(status=status.HTTP_204_NO_CONTENT)
+    
+class UserRetrieveUpdateDestroy(generics.RetrieveUpdateDestroyAPIView):
+    queryset = User.objects.all()
+    serializer_class = UserSerializer
+    lookup_field = "pk"
+
+class UserList(APIView):
+    def get(self, request, format=None):
+        username = request.query_params.get("username", "")
+        if username:
+            users = User.objects.filter(username__icontains=username)
+        else:
+            # If no name matches return all 
+            users = User.objects.all()
+    
+        serializer = UserSerializer(users, many=True)
+        return Response(serializer.data, status=status.HTTP_200_OK)
+
+@api_view(['GET'])
+def search_users(request):
+    username = request.query_params.get("username", "")
+    users = User.objects.filter(username__icontains=username)
+    response_data = [{"id": user.id, "username": user.username} for user in users]
+    return JsonResponse(response_data, safe=False)
 
 # ----------- Auth Section ------------
 @api_view(['POST'])
