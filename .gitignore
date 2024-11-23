@@ -35,8 +35,10 @@ yarn-error.*
 # typescript
 *.tsbuildinfo
 
+env
 .env
 env
 bun.lockb
 
 vb.sqlite3
+ios

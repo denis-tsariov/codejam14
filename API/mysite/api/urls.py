@@ -1,4 +1,4 @@
-from django.urls import path
+from django.urls import path, re_path
 from . import views
 
 urlpatterns = [
@@ -37,4 +37,7 @@ urlpatterns = [
         views.MapsRetrieveUpdateDestroy.as_view(), 
         name="maps-update"
         ),
+    re_path('login', views.login),
+    re_path('signup', views.signup),
+    re_path('test_token', views.test_token),
 ]
