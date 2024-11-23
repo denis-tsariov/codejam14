@@ -1,10 +1,7 @@
 from django.db import models
+from django.contrib.auth.models import User 
 
 # Create your models here.
-class Users(models.Model):
-    username = models.CharField(max_length=100)
-    password = models.CharField(max_length=100)
-    email = models.CharField(max_length=100) 
 
 class Restaurants(models.Model):
     PRICE_LEVEL = (
@@ -22,6 +19,7 @@ class Restaurants(models.Model):
 class Maps(models.Model):
     listname = models.CharField(max_length=100)
     restos = models.ForeignKey(Restaurants, on_delete=models.CASCADE)
+    user_id = models.ForeignKey(User, on_delete=models.CASCADE)   
 
     """
     class Meta:

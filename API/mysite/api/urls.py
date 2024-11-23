@@ -18,16 +18,6 @@ urlpatterns = [
         name="update", 
         ),
     path(
-        "users/", 
-        views.UserListCreate.as_view(), 
-        name="users-list-create"
-        ),
-    path(
-        "users/<int:pk>/", 
-        views.UserRetrieveUpdateDestroy.as_view(), 
-        name="users-update"
-        ),
-    path(
         "maps/", 
         views.MapsListCreate.as_view(), 
         name="maps-list-create"

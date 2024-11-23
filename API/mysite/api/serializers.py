@@ -1,5 +1,5 @@
 from rest_framework import serializers
-from .models import Users, Restaurants, Maps
+from .models import Restaurants, Maps
 from django.contrib.auth.models import User
 
 class RestaurantsSerializer(serializers.ModelSerializer):
@@ -10,12 +10,7 @@ class RestaurantsSerializer(serializers.ModelSerializer):
 class MapsSerializer(serializers.ModelSerializer):
     class Meta:
         model = Maps
-        fields = ["id", "listname", "restos"]
-
-class UsersSerializer(serializers.ModelSerializer):
-    class Meta:
-        model = Users
-        fields = ["id", "username", "password", "email"]
+        fields = ["id", "listname", "restos", "user_id"] 
 
 class UserSerializer(serializers.ModelSerializer):
     class Meta(object):
