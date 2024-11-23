@@ -39,6 +39,8 @@ export default function SignUpForm() {
         if (response.status === 200) {
           if (response.data.username) {
             Alert.alert("User with that username already exists!");
+          } else if (response.data.email) {
+            Alert.alert("Please enter a valid email address!");
           } else {
             Alert.alert("Success", `Welcome, ${response.data.user.username}!`);
           }

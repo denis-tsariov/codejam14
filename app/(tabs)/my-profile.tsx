@@ -1,20 +1,34 @@
 import { Link } from "expo-router";
-import { StyleSheet, Text, View } from "react-native";
+import { Button, StyleSheet, Text, View } from "react-native";
+import { useAuth } from "../auth/auth-context";
 
 export default function MyProfile() {
+  const { user, setUser } = useAuth();
+  const handleLogOut = () => {
+    setUser(null);
+  }
   return (
     <View style={styles.container}>
-      <Text>Welcome</Text>
+      {user ? (
+        <>
+          <Text>Logged in!</Text>
+          <Button title="logout" onPress={handleLogOut}/>
+        </>
+      ) : (
+        <>
+          <Text>Welcome</Text>
 
-      {/* Link to the Login Modal */}
-      <Link href="/auth/login" style={styles.link}>
-        Login
-      </Link>
+          {/* Link to the Login Modal */}
+          <Link href="/auth/login" style={styles.link}>
+            Login
+          </Link>
 
-      {/* Link to the Sign Up Modal */}
-      <Link href="/auth/signup" style={styles.link}>
-        Sign Up
-      </Link>
+          {/* Link to the Sign Up Modal */}
+          <Link href="/auth/signup" style={styles.link}>
+            Sign Up
+          </Link>
+        </>
+      )}
     </View>
   );
 }

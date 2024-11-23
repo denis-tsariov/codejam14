@@ -35,6 +35,13 @@ class RestaurantsRetrieveUpdateDestroy(generics.RetrieveUpdateDestroyAPIView):
     serializer_class = RestaurantsSerializer
     lookup_field = "pk" 
 
+# Custom APIView to get the food array of a restaurant
+class RestaurantsFoodArray(APIView):
+    def get(self, request, pk, format=None):
+        restaurant = get_object_or_404(Restaurants, pk=pk)
+        food_array = restaurant.food_array  
+        return JsonResponse({"food_array": food_array}, status=status.HTTP_200_OK)
+
 class RestaurantsList(APIView):
     def get(self, request, format=None):
         name = request.query_params.get("name", "")
@@ -170,4 +177,7 @@ def signup(request):
 @authentication_classes([SessionAuthentication, TokenAuthentication])
 @permission_classes([IsAuthenticated])
 def test_token(request):
-    return Response("passed for {}".format(request.user.email))
+    return Response({
+        'id': request.user.id,
+        'username': request.user.username,
+        'email':request.user.email,})

@@ -4,11 +4,8 @@ import {useState} from "react";
 import { Platform } from "react-native";
 
 import { HapticTab } from "@/components/HapticTab";
-import { IconSymbol } from "@/components/ui/IconSymbol";
-import TabBarBackground from "@/components/ui/TabBarBackground";
-import { Colors } from "@/constants/Colors";
 import { useColorScheme } from "@/hooks/useColorScheme";
-import { Utensils, Map, User } from "lucide-react-native";
+import { Utensils, UserRoundSearch, User } from "lucide-react-native";
 import { serverPlaceData } from "@/hooks/filterPlacesData";
 export default function TabLayout() {
   const colorScheme = useColorScheme();
@@ -31,10 +28,10 @@ export default function TabLayout() {
       }}
     >
       <Tabs.Screen
-        name="explore"
+        name="search"
         options={{
-          title: "Explore",
-          tabBarIcon: ({ color }) => <Map color={color} />,
+          title: "Search",
+          tabBarIcon: ({ color }) => <UserRoundSearch color={color} />,
         }}
       />
       <Tabs.Screen
