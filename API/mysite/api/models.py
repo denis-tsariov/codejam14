@@ -26,7 +26,5 @@ class Maps(models.Model):
         ordering = ["listname"]
     """    
 
-    
-
     def __str__(self):
         return self.name

@@ -27,6 +27,14 @@ urlpatterns = [
         views.MapsRetrieveUpdateDestroy.as_view(), 
         name="maps-update"
         ),
+    path('maps/common_restaurants/', 
+         views.MapsCommonRestaurants.as_view(), 
+         name='common-restaurants'
+        ),
+    path('maps/user_maps/', 
+         views.MapsUserList.as_view(), 
+         name='user-maps'
+        ),
     re_path('login', views.login),
     re_path('signup', views.signup),
     re_path('test_token', views.test_token),

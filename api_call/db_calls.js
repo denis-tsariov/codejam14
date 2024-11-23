@@ -88,6 +88,32 @@ export const addMapRecord = async (data) => {
     return await deleteData(`maps/${id}`);
   }
 
+// Function to get common restaurants for two users
+export const getCommonRestaurants = async (user1_id, user2_id) => {
+    try {
+        const response = await axios.get(`${BASE_URL}/common_restaurants/`, {
+            params: { user1_id, user2_id }
+        });
+        return response.data;
+    } catch (error) {
+        console.error("Error fetching common restaurants:", error);
+        throw error;
+    }
+};
+
+// function to get a list of restaurants for a certain user from the maps table
+export const getRestaurantsForUser = async (user_id) => {
+    try {
+        const response = await axios.get(`${BASE_URL}/maps/`, {
+            params: { user_id }
+        });
+        return response.data;
+    } catch (error) {
+        console.error("Error fetching restaurants for user:", error);
+        throw error;
+    }
+};
+
 
 // export all functions as a module
 export default {
@@ -97,7 +123,9 @@ export default {
     getRestaurantFoodImages,
     addMapRecord, 
     updateMapRecord,
-    deleteMapRecord
+    deleteMapRecord, 
+    getCommonRestaurants, 
+    getRestaurantsForUser
   };
 
 
