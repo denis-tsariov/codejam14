@@ -10,12 +10,14 @@ import {
   Platform,
 } from "react-native";
 import axios from "axios";
+import { useAuth } from "./auth-context";
 
 export default function Modal() {
   const [name, setName] = useState("");
   const [password, setPassword] = useState("");
   const url = "http://10.0.2.2:8000/login";
   const authurl = "http://10.0.2.2:8000/test_token";
+  const { user, setUser } = useAuth();
 
   const handleLogIn = async () => {
     if (!name || !password) {
@@ -39,7 +41,8 @@ export default function Modal() {
         axios
           .get(authurl, { headers: authheaders })
           .then(function (validationResponse) {
-            Alert.alert(validationResponse.data);
+            Alert.alert("Successfully logged in !");
+            setUser(validationResponse.data)
           })
           .catch(function (error) {
             console.log(error);

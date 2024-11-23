@@ -145,4 +145,7 @@ def signup(request):
 @authentication_classes([SessionAuthentication, TokenAuthentication])
 @permission_classes([IsAuthenticated])
 def test_token(request):
-    return Response("passed for {}".format(request.user.email))
+    return Response({
+        'id': request.user.id,
+        'username': request.user.username,
+        'email':request.user.email,})
