@@ -28,8 +28,8 @@ class Command(BaseCommand):
         Restaurants.objects.bulk_create(restos)
         self.stdout.write(self.style.SUCCESS('Data loaded successfully'))
 
-
-# python3 manage.py load_data api/management/commands/data.json 
+# Run the following command to load the data from the JSON file into the database: from the API/mysite directory:
+# python3 manage.py load_data api/management/commands/serverPlaceData.json
 
 
 

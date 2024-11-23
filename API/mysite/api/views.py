@@ -82,6 +82,43 @@ class MapsList(APIView):
         serializer = MapsSerializer(maps, many=True)
         return Response(serializer.data, status=status.HTTP_200_OK)
 
+class MapsCommonRestaurants(APIView): 
+    def get(self, request, format=None):
+            user1_id = request.query_params.get('user1_id')
+            user2_id = request.query_params.get('user2_id')
+
+            if not user1_id or not user2_id:
+                return Response(
+                    {"error": "user1_id and user2_id are required"},
+                    status=status.HTTP_400_BAD_REQUEST
+                )
+            # Get the restaurant IDs for both users
+            user1_restaurants = Maps.objects.filter(user_id=user1_id).values_list('restos', flat=True)
+            user2_restaurants = Maps.objects.filter(user_id=user2_id).values_list('restos', flat=True)
+            # Find common restaurants
+            common_restaurants_ids = set(user1_restaurants) & set(user2_restaurants)
+            # Get the details of the common restaurants
+            common_restaurants = Restaurants.objects.filter(id__in=common_restaurants_ids)
+            # Serialize the restaurant data
+            serializer = RestaurantsSerializer(common_restaurants, many=True)
+            return Response(serializer.data, status=status.HTTP_200_OK)
+    
+class MapsUserList(APIView):
+    def get(self, request, format=None):
+        user_id = request.query_params.get("user_id")
+        if not user_id:
+            return Response(
+                {"error": "user_id is required"},
+                status=status.HTTP_400_BAD_REQUEST
+            )
+        # Get all restaurant IDs mapped to the user
+        user_restaurants = Maps.objects.filter(user_id=user_id).values_list("restos", flat=True)
+        # Get the restaurant details from the Restaurants table
+        restaurants = Restaurants.objects.filter(id__in=user_restaurants)
+        # Serialize the data
+        serializer = RestaurantsSerializer(restaurants, many=True)
+        return Response(serializer.data, status=status.HTTP_200_OK)
+
 # ----------- Auth Section ------------
 @api_view(['POST'])
 def login(request):

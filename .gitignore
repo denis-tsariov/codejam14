@@ -40,5 +40,5 @@ env
 env
 bun.lockb
 
-vb.sqlite3
+db.sqlite3
 ios
