@@ -1,0 +1,16 @@
+[
+    {
+        "name": "CharField",
+        "location": "JSONField",
+        "cost": 1,
+        "rating": 0.0,
+        "food_array": "JSONField"
+    }, 
+    {
+        "name": "CharField",
+        "location": "JSONField",
+        "cost": 0,
+        "rating": 0.0,
+        "food_array": "JSONField"
+    }
+]
