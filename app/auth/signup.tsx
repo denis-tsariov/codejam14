@@ -1,4 +1,4 @@
-import { Link,  router } from 'expo-router';
+import { Link, router } from "expo-router";
 import React, { useState } from "react";
 import {
   View,
@@ -10,20 +10,46 @@ import {
   KeyboardAvoidingView,
   Platform,
 } from "react-native";
+import axios from "axios";
 
 export default function SignUpForm() {
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const url = "http://10.0.2.2:8000/signup";
 
-  const handleSignUp = () => {
+  const handleSignUp = async () => {
     if (!name || !email || !password) {
       Alert.alert("Error", "All fields are required!");
       return;
     }
-    Alert.alert("Success", `Welcome, ${name}!`);
+    const data = {
+      username: name,
+      password: password,
+      email: email,
+    };
+    const headers = {
+      "Content-type": "application/json",
+    };
     // Here, you would typically send data to a backend server
-    
+    axios
+      .post(url, data, { headers })
+      .then(function (response) {
+        console.log(response.data);
+        if (response.status === 200) {
+          if (response.data.username) {
+            Alert.alert("User with that username already exists!");
+          } else {
+            Alert.alert("Success", `Welcome, ${response.data.user.username}!`);
+          }
+          // Handle successful response, e.g., navigate to a new screen
+        } else {
+          Alert.alert("Error", "Something went wrong!");
+        }
+      })
+      .catch(function (error) {
+        console.log(error);
+      });
   };
 
   return (
@@ -35,7 +61,7 @@ export default function SignUpForm() {
 
       <TextInput
         style={styles.input}
-        placeholder="Name"
+        placeholder="Username"
         value={name}
         onChangeText={setName}
       />
@@ -59,9 +85,8 @@ export default function SignUpForm() {
       <Button title="Sign Up" onPress={handleSignUp} />
     </KeyboardAvoidingView>
   );
-
 }
-  
+
 const styles = StyleSheet.create({
   container: {
     flex: 1,
