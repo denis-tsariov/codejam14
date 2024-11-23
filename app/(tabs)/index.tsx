@@ -2,7 +2,7 @@ import { useRef } from "react";
 import { View } from "react-native";
 import DecisionButtons from "@/components/home/decision-buttons";
 import FoodPlane from "@/components/home/food-plane";
-import food from "../../assets/data/users";
+import food from "../../assets/data/users2";
 import Swiper from "react-native-deck-swiper";
 
 export default function HomeScreen() {
@@ -23,8 +23,8 @@ export default function HomeScreen() {
   };
 
   return (
-    <View className="h-full w-full relative">
-      <View className="absolute h-5/6 top-0 flex flex-col items-center justify-center bg-transparent">
+    <View className="h-full w-full flex">
+      <View className="absolute h-5/6 flex flex-col items-center justify-center bg-transparent">
         <Swiper
           cards={food}
           renderCard={(card) => {
@@ -48,10 +48,19 @@ export default function HomeScreen() {
           }}
         />
       </View>
-      <DecisionButtons
-        onSwipeLeft={() => handleSwipe("left")}
-        onSwipeRight={() => handleSwipe("right")}
-      />
+      <View
+        style={{
+          position: "absolute",
+          width: "100%",
+          marginTop: "175%",
+          zIndex: 40,
+        }}
+      >
+        <DecisionButtons
+          onSwipeLeft={() => handleSwipe("left")}
+          onSwipeRight={() => handleSwipe("right")}
+        />
+      </View>
     </View>
   );
 }

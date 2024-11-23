@@ -1,5 +1,6 @@
 import { Tabs } from "expo-router";
 import React from "react";
+import {useState} from "react";
 import { Platform } from "react-native";
 
 import { HapticTab } from "@/components/HapticTab";
@@ -8,10 +9,11 @@ import TabBarBackground from "@/components/ui/TabBarBackground";
 import { Colors } from "@/constants/Colors";
 import { useColorScheme } from "@/hooks/useColorScheme";
 import { Utensils, Map, User } from "lucide-react-native";
-
+import { serverPlaceData } from "@/hooks/filterPlacesData";
 export default function TabLayout() {
   const colorScheme = useColorScheme();
 
+  const [likedPlaces, setLikedPlaces] = useState<serverPlaceData[]>([]);
   return (
     <Tabs
       screenOptions={{
@@ -41,13 +43,15 @@ export default function TabLayout() {
           title: "Food",
           tabBarIcon: ({ color }) => <Utensils color={color} />,
         }}
+        //children={()=><Test propName={likedPlaces}/>}
       />
       <Tabs.Screen
-        name="test"
+        name="favFoods"
         options={{
-          title: "Test",
+          title: "FavFoods",
           tabBarIcon: ({ color }) => <Utensils color={color} />,
         }}
+        
       />
       <Tabs.Screen
         name="my-profile"

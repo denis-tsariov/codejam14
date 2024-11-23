@@ -1,19 +1,22 @@
+import { Check, X } from "lucide-react-native";
 import { View, Text } from "react-native";
 
-export default function DecisionButtons({ onSwipeLeft, onSwipeRight } : any) {
+export default function DecisionButtons({ onSwipeLeft, onSwipeRight }: any) {
   return (
-    <View className="absolute z-40 w-full flex flex-row h-20 items-center justify-around bottom-28">
-      <View 
-        className="flex justify-center items-center w-20 h-10 border bg-orange-900 rounded-xl"
-        onTouchEnd={onSwipeLeft}
-      >
-        <Text className="text-white">No</Text>
-      </View>
-      <View 
-        className="flex justify-center items-center w-20 h-10 border bg-green-800 rounded-xl"
-        onTouchEnd={onSwipeRight}
-      >
-        <Text className="text-white">Yes</Text>
+    <View className="">
+      <View className="w-full h-20 flex flex-row items-center justify-around">
+        <View
+          className="flex justify-center items-center w-20 h-10 border-2 bg-red-300 rounded-xl"
+          onTouchEnd={onSwipeLeft}
+        >
+          <X color={"black"} strokeWidth={3} />
+        </View>
+        <View
+          className="flex justify-center items-center w-20 h-10 border-2 bg-green-300 rounded-xl"
+          onTouchEnd={onSwipeRight}
+        >
+          <Check color={"black"} strokeWidth={3} />
+        </View>
       </View>
     </View>
   );
