@@ -23,6 +23,11 @@ urlpatterns = [
         name="maps-list-create"
         ),
     path(
+        "restaurants/food_array/<int:pk>/", 
+        views.RestaurantsFoodArray.as_view(), 
+        name="food-array"
+        ),
+    path(
         "maps/<int:pk>/", 
         views.MapsRetrieveUpdateDestroy.as_view(), 
         name="maps-update"

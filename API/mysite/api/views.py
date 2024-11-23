@@ -1,4 +1,5 @@
 from django.shortcuts import render
+from django.http import JsonResponse
 from rest_framework import generics, status
 from rest_framework.response import Response
 from .models import Restaurants, Maps
@@ -33,6 +34,13 @@ class RestaurantsRetrieveUpdateDestroy(generics.RetrieveUpdateDestroyAPIView):
     queryset = Restaurants.objects.all()
     serializer_class = RestaurantsSerializer
     lookup_field = "pk" 
+
+# Custom APIView to get the food array of a restaurant
+class RestaurantsFoodArray(APIView):
+    def get(self, request, pk, format=None):
+        restaurant = get_object_or_404(Restaurants, pk=pk)
+        food_array = restaurant.food_array  
+        return JsonResponse({"food_array": food_array}, status=status.HTTP_200_OK)
 
 class RestaurantsList(APIView):
     def get(self, request, format=None):
