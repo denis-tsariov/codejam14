@@ -116,7 +116,8 @@ export function filteredJSONtoTableJSON(inputFileName : string, outputFileName: 
         tmpPlace.location = place.location;
         tmpPlace.rating = place.rating;
         //let pLevel : PRICE_LEVEL = place.priceLevel
-        tmpPlace.cost = priceLevelMap[place.priceLevel];
+        console.log("price level of ", tmpPlace.name, ":", priceLevelMap[place.priceLevel]);
+        tmpPlace.cost = priceLevelMap[place.priceLevel] ?? 3;
         let urisList : string[] = [];
         for(const img of place.photos){
             urisList.push(img.googleMapsUri);
@@ -138,4 +139,4 @@ export function filteredJSONtoTableJSON(inputFileName : string, outputFileName: 
 }
 
 //filterData();
-//filteredJSONtoTableJSON("./filteredPlaceData.json", "serverPlaceData,json")
+filteredJSONtoTableJSON("./filteredPlaceData.json", "serverPlaceData.json")
