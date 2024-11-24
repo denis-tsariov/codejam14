@@ -156,7 +156,6 @@ export const createMapRecord = async (data) => {
 
 // export all functions as a module
 export default {
-<<<<<<< Updated upstream
     getRestaurants,
     getRestaurantsWithPagination,
     getRestaurantById,
@@ -172,21 +171,6 @@ export default {
     createMapRecord
   };
 
-=======
-  getRestaurants,
-  getRestaurantsWithPagination,
-  getRestaurantById,
-  getRestaurantFoodImages,
-  addMapRecord,
-  updateMapRecord,
-  deleteMapRecord,
-  getCommonRestaurants,
-  getRestaurantsForUser,
-  getUsers,
-  getUserByUsername,
-  addMapRed,
-};
->>>>>>> Stashed changes
 
 /*
 functions we need:
