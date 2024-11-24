@@ -11,20 +11,32 @@ import {
   createMapRecord,
 } from "@/api_call/db_calls";
 import { useAuth } from "../auth/auth-context";
+import buildMap from "../../hooks/makeFriendsDict";
 
 interface Restaurant {
+  restos: Number;
   id: any;
   food_array: { length: number }[];
   // Add other properties of Restaurant here
 }
 
 export default function HomeScreen() {
+  const { user }: any = useAuth();
+
   const [restaurants, setRestaurants] = useState<Restaurant[]>([]);
+  const [restosFriendsLike, setRestosFriendsLike] = useState(
+    new Map<Number, Number[]>()
+  );
   useEffect(() => {
     getRestaurants().then((resp) => {
       setRestaurants(resp);
     });
-  }, []);
+    if (user) {
+      buildMap(user.id).then((resp) => {
+        setRestosFriendsLike(resp);
+      });
+    }
+  }, [user]);
 
   const swiperRef = useRef<Swiper<any>>(null);
 
@@ -43,8 +55,6 @@ export default function HomeScreen() {
       swiperRef.current?.swipeRight();
     }
   };
-
-  const { user }: any = useAuth();
 
   const [restaurantIndex, setRestaurantIndex] = useState(0);
   const [imageIndex, setImageIndex] = useState(0);
@@ -82,16 +92,22 @@ export default function HomeScreen() {
           onSwipedAll={() => {
             console.log("onSwipedAll");
           }}
-          onSwipedRight={async () => {
+          onSwipedRight={ () => {
+            // have to check for a collision with someone
+            console.log(restosFriendsLike);
+            console.log("current restaurant id", restaurants[restaurantIndex].id);
+            if (restosFriendsLike.has(restaurants[restaurantIndex].id)) {
+              Alert.alert("New Match", "You have a new match!");
+            }
             const data = {
               user_id: user.id,
               restos: restaurants[restaurantIndex].id,
               listname: "saved",
             };
-            console.log(data);
-            createMapRecord(data).then((resp) => console.log("resp", resp));
+            //console.log(data);
+            // createMapRecord(data).then((resp) => console.log("resp", resp));
             getRestaurantsForUser(user.id).then((response) => {
-              console.log("get", response);
+              //console.log("get", response);
             });
           }}
         />

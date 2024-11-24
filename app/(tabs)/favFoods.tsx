@@ -34,9 +34,7 @@ export default function Test() {
       router.push("/my-profile");
     }
   }, [user]);
-  if (!user) {
-    return <NotLoggedIn />;
-  }
+
   //const user = 1;
   const [friendsList, setFriendsList] = useState([]);
   useEffect(() => {
@@ -130,6 +128,9 @@ export default function Test() {
   //   />
   //   </View>
   // );
+  if (!user) {
+    return <NotLoggedIn />;
+  }
   return (
     //<Text>{JSON.stringify(friendsList)}</Text>
     <Text>Hello</Text>

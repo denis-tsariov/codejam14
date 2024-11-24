@@ -1,12 +1,14 @@
 import { getFriendsForUser, getRestaurantsForUser } from "@/api_call/db_calls";
+import { useAuth } from "@/app/auth/auth-context";
 import { useEffect, useState } from "react";
 
 //const { user } = useAuth();
-export default async function buildMap() {
-  const user = 1;
+export default async function buildMap(userId: Number) {
+  //const { user } = useAuth();
+  //const user = 1;
   let friendsList = new Array();
   const restosFriendsLike = new Map<Number, Number[]>();
-  friendsList = await getFriendsForUser(user);
+  friendsList = await getFriendsForUser(userId);
   /* getFriendsForUser(user).then((data) => {
     // setFriendsList(data);
     //console.log(data)
@@ -35,4 +37,4 @@ export default async function buildMap() {
   return restosFriendsLike;
 }
 
-buildMap();
+//buildMap();
