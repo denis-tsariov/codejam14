@@ -15,8 +15,8 @@ import { useAuth } from "./auth-context";
 export default function Modal() {
   const [name, setName] = useState("");
   const [password, setPassword] = useState("");
-  const url = "http://10.0.2.2:8000/login";
-  const authurl = "http://10.0.2.2:8000/test_token";
+  const url = "http://127.0.0.1:8000/login";
+  const authurl = "http://127.0.0.1:8000/test_token";
   const { user, setUser } = useAuth();
 
   const handleLogIn = async () => {

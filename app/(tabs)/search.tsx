@@ -1,35 +1,53 @@
-import { StyleSheet, View, Text, FlatList } from "react-native";
+import {
+  StyleSheet,
+  View,
+  Text,
+  Button,
+  Alert,
+} from "react-native";
 import { useAuth } from "../auth/auth-context";
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { Searchbar } from "react-native-paper";
-import getUsers from '../../api_calls/db_calls.js';
+import { getUsers } from "../../api_call/db_calls.js";
+import { Modal } from "react-native";
 
 export default function TabTwoScreen() {
-  const { user, setUser } = useAuth();
+  const { user } = useAuth();
   const [search, setSearch] = useState("");
   const [filteredData, setFilteredData] = useState([]);
-  const updateSearch = (value) => {
+  const [data, setData] = useState([]);
+  const [selectedUser, setSelectedUser] = useState({});
+  const [modalOpen, setModalOpen] = useState(false);
+
+  const updateSearch = (value: React.SetStateAction<string>) => {
     setSearch(value);
 
     if (value) {
-      const filtered = data.filter((item) =>
-        item.name.toLowerCase().includes(value.toLowerCase())
+      const filtered = data.filter((user : User) =>
+        user.username.toLowerCase().includes(value.toString().toLowerCase())
       );
       setFilteredData(filtered);
     } else {
       setFilteredData(data);
     }
   };
-  const data = [
-    { id: "1", name: "Apple" },
-    { id: "2", name: "Banana" },
-    { id: "3", name: "Orange" },
-    { id: "4", name: "Grapes" },
-    { id: "5", name: "Mango" },
-  ];
 
-  const data1 = getUsers;
-  console.log(data1)
+  const handlePress = (user : User) => {
+    setSelectedUser(user);
+  };
+
+  type User = {
+    id: Number;
+    username: string;
+    email: string;
+  };
+
+  useEffect(() => {
+    getUsers().then((data) => {
+      setFilteredData(data)
+      setData(data)
+    });
+  }, [])
 
   return (
     <View style={styles.container}>
@@ -41,13 +59,11 @@ export default function TabTwoScreen() {
             value={search}
             style={styles.searchBar}
           />
-          <FlatList
-            data={filteredData.length > 0 ? filteredData : data}
-            keyExtractor={(item) => item.id}
-            renderItem={({ item }) => (
-              <Text style={styles.item}>{item.name}</Text>
-            )}
-          />
+          {filteredData.map((user: User, key) => (
+            <View key={key} style={styles.users}>
+              <Button title={user.username} onPress={() => handlePress(user)} />
+            </View>
+          ))}
         </View>
       ) : (
         <Text>Please Log in to use this feature !</Text>
@@ -59,14 +75,46 @@ export default function TabTwoScreen() {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    paddingTop: 50,
-    paddingHorizontal: 10,
+    padding: 20,
+    backgroundColor: "#fff",
   },
   searchBar: {
-    marginBottom: 10,
+    height: 50,
+    borderWidth: 1,
+    borderColor: "#ccc",
+    borderRadius: 5,
+    paddingHorizontal: 10,
+    marginBottom: 20,
   },
   item: {
-    padding: 10,
-    fontSize: 18,
+    padding: 15,
+    backgroundColor: "#f9f9f9",
+    borderBottomWidth: 1,
+    borderBottomColor: "#ddd",
+    borderRadius: 5,
+    marginBottom: 10,
   },
+  itemText: {
+    fontSize: 16,
+  },
+  title: {
+    fontSize: 18,
+    fontWeight: "bold",
+  },
+  tags: {
+    flexDirection: "row",
+    marginTop: 5,
+  },
+  tag: {
+    fontSize: 14,
+    color: "#555",
+    marginRight: 10,
+  },
+  users: {
+    flex: 1,
+    padding: 0,
+    margin: 0,
+    gap: 0,
+    height: 0,
+  }
 });
