@@ -1,14 +1,8 @@
-import {
-  StyleSheet,
-  View,
-  Text,
-  Button,
-  Alert,
-} from "react-native";
+import { StyleSheet, View, Text, Button, Alert } from "react-native";
 import { useAuth } from "../auth/auth-context";
 import React, { useEffect, useState } from "react";
 import { Searchbar } from "react-native-paper";
-import getUsers from '../../api_call/db_calls.js';
+import { getUsers } from "../../api_call/db_calls.js";
 
 export default function TabTwoScreen() {
   const { user } = useAuth();
@@ -22,7 +16,7 @@ export default function TabTwoScreen() {
     setSearch(value);
 
     if (value) {
-      const filtered = data.filter((user : User) =>
+      const filtered = data.filter((user: User) =>
         user.username.toLowerCase().includes(value.toString().toLowerCase())
       );
       setFilteredData(filtered);
@@ -31,7 +25,7 @@ export default function TabTwoScreen() {
     }
   };
 
-  const handlePress = (user : User) => {
+  const handlePress = (user: User) => {
     setSelectedUser(user);
   };
 
@@ -43,10 +37,10 @@ export default function TabTwoScreen() {
 
   useEffect(() => {
     getUsers().then((data) => {
-      setFilteredData(data)
-      setData(data)
+      setFilteredData(data);
+      setData(data);
     });
-  }, [])
+  }, []);
 
   return (
     <View style={styles.container}>
@@ -115,5 +109,5 @@ const styles = StyleSheet.create({
     margin: 0,
     gap: 0,
     height: 0,
-  }
+  },
 });
