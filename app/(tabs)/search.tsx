@@ -18,8 +18,8 @@ import NotLoggedIn from "@/components/home/not-logged-in";
 export default function TabTwoScreen() {
   const { user } = useAuth();
   const [search, setSearch] = useState("");
-  const [filteredData, setFilteredData] = useState([]);
-  const [data, setData] = useState([]);
+  const [filteredData, setFilteredData] = useState<User[]>([]);
+  const [data, setData] = useState<User[]>([]);
 
   const router = useRouter();
   console.log("user", user);
@@ -44,10 +44,6 @@ export default function TabTwoScreen() {
     }
   };
 
-
-  const handlePress = (user: User) => {
-  };
-
   type User = {
     id: Number;
     username: string;
@@ -59,18 +55,27 @@ export default function TabTwoScreen() {
       setData(data);
       getFriendsForUser(user!.id).then((isFriend) => {
         console.log("friends", data);
-        setData(data.map((item: User) => ({
+        setData(data.map((item: User) => (
+
+          {
           ...item,
           relationship: (
-            isFriend.some((friend: any) => friend.friend_id.toString() === user!.id) ? 
+             item.id.toString() == user!.id ? 
               "self" : 
               (isFriend.some((friend: any) => friend.friend_id === item.id) ? 
                 "friend" : 
                 "not friend")),
         })));
-        setFilteredData(data);
       });
+
+      useEffect(() => {setFilteredData(data);}, [data]);
+      
     });
+    setTimeout(() => {
+      updateSearch('m');
+      updateSearch('');
+    }, 500)
+    
   }, []);
 
   if (!user) {
@@ -109,7 +114,7 @@ export default function TabTwoScreen() {
                 paddingRight: 20,
                 paddingLeft: 20,
               }}
-              onPress={() => handlePress(friend)}
+              onPress={() => {}}
             >
               <View
                 style={{
@@ -138,7 +143,21 @@ export default function TabTwoScreen() {
                     friend_id: friend.id,
                   };
                   console.log("follow pressed", data);
-                  make_friend(data).then((resp) => console.log("resp", resp));
+                make_friend(data).then((resp) => {
+                  const updatedFriend = { ...friend, relationship: "friend" };
+                  console.log("updatedFriend", updatedFriend);
+                  setData((prevData: User[]) =>
+                    prevData.map((item: User) =>
+                      item.id === friend.id ? updatedFriend : item
+                    )
+                  );
+
+                  setFilteredData((prevFilteredData) =>
+                    prevFilteredData.map((item) =>
+                      item.id === friend.id ? updatedFriend : item
+                    )
+                  );
+                }).catch((err) => console.log("error", err));
                 }}
               >
                 <View
@@ -156,7 +175,7 @@ export default function TabTwoScreen() {
                       fontWeight: "600",
                     }}
                   >
-                    follow
+                     follow
                   </Text>
                 </View>
               </Pressable>}
