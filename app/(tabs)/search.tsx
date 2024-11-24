@@ -8,8 +8,7 @@ import {
 import { useAuth } from "../auth/auth-context";
 import React, { useEffect, useState } from "react";
 import { Searchbar } from "react-native-paper";
-import { getUsers } from "../../api_call/db_calls.js";
-import { Modal } from "react-native";
+import getUsers from '../../api_call/db_calls.js';
 
 export default function TabTwoScreen() {
   const { user } = useAuth();

@@ -13,6 +13,11 @@ urlpatterns = [
         name="friends-list-create"
     ),
     path(
+        "getFriends/",
+        views.FriendsList.as_view(),
+        name="get-friends-list"
+    ),
+    path(
         "friends/<int:pk>/",
         views.FriendsRetrieveUpdateDestroy.as_view(),
         name="friends-update"

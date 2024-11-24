@@ -2,10 +2,43 @@ import { View, Text, Image, StyleSheet, FlatList , Dimensions} from 'react-nativ
 import { serverPlaceData } from "@/hooks/filterPlacesData";
 import { useLocalSearchParams } from "expo-router";
 import { useFocusEffect } from "expo-router";
-import React from "react";
+import React, {useState, useEffect} from "react";
 import data from  "@/assets/data/users";
-export default function Test()
-  {
+import { useAuth } from '../auth/auth-context';
+import { getFriends, getRestaurantById } from '@/api_call/db_calls';
+
+export type friendsEntry = {id: Number, user_Id: Number, friend_id: Number};
+export type restoEntry = {id:Number, 
+  name: string, 
+  location: {latitude: Number,longitude:Number},
+  cost: Number, 
+  rating:Number, 
+  food_array: string[]};
+
+export default async function Test(){
+  const { user } = useAuth();
+    const [friendsList, setFriendsList] = useState([]);
+    useEffect(() => {
+      getFriends(user).then((data) => {
+        setFriendsList(data)
+      });
+    }, [])
+    // restosFriendsLike should be a map where the restaurant ids are the key and then we have 
+    const restosFriendsLike = new Map<Number, Number[]>();
+    for (let friendEntry of friendsList){
+      let tmp = (friendEntry as friendsEntry);
+      let response = await getRestaurantById(tmp.friend_id);
+      for (let restoEntry of response){
+        let tmpResto = (restoEntry as restoEntry);
+        if (restosFriendsLike.has(tmpResto.id)){
+          restosFriendsLike.get(tmpResto.id)?.push(tmp.friend_id);
+        } 
+        else {
+          restosFriendsLike.set(tmpResto.id, [tmp.friend_id]);
+        }
+      }
+    }
+
   //const { likedPlaces } = useLocalSearchParams();
   useFocusEffect(
     React.useCallback(() => {
