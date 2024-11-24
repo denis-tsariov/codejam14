@@ -9,7 +9,7 @@ class Restaurants(models.Model):
         (1, 'Cheap'),
         (2, 'Moderate'),
         (3, 'Expensive'),
-        (4, 'Very Expensive'))
+        (4, 'Very Expensive'))  
     name = models.CharField(max_length=100)
     location = models.JSONField()
     cost = models.IntegerField(choices=PRICE_LEVEL)
