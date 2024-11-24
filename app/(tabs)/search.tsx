@@ -63,7 +63,7 @@ export default function TabTwoScreen() {
       }}
       className=""
     >
-      {true ? (
+      {user ? (
         <View style={{ flex: 1, gap: 20, paddingBottom: 100 }}>
           <Searchbar
             placeholder="Search..."
