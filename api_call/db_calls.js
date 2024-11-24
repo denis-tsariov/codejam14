@@ -64,6 +64,16 @@ const handleError = (error) => {
 export const getRestaurants = async () => {
   return await fetchData("restaurants");
 };
+
+export const getFriendsForUser = async (user_id) => {
+  try {
+    const response = await axios.get(`${BASE_URL}/getFriends/?user_id=${user_id}`);
+    return response.data;
+  } catch (error) {
+    throw error;
+  }
+}
+
 //get a list of 100 restaurants with pagination
 export const getRestaurantsWithPagination = async (page) => {
   return await fetchData(`restaurants?page=${page}`);
@@ -109,7 +119,7 @@ export const getCommonRestaurants = async (user1_id, user2_id) => {
 //get the list of friends of a user
 export const getFriends = async (user1_id) => {
   try {
-    const response = await axios.get(`${BASE_URL}/getFriends/`, {
+    const response = await axios.get(`${BASE_URL}/get_friend_list_for_user/`, {
       params: { user1_id}
     })
     return response.data
@@ -169,7 +179,8 @@ export default {
     getUsers, 
     getUserByUsername,
     getFriends, 
-    createMapRecord
+    createMapRecord,
+    getFriendsForUser
   };
 
 

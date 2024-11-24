@@ -80,7 +80,6 @@ export default function HomeScreen() {
               listname: "saved",
             };
             console.log(data)
-            //addMapRecord({
             createMapRecord(data).then((resp) => console.log("resp", resp));
             getRestaurantsForUser(user.id).then((response) => {
               console.log("get", response);

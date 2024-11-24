@@ -5,7 +5,7 @@ import { useFocusEffect } from "expo-router";
 import React, {useState, useEffect} from "react";
 import data from  "@/assets/data/users";
 import { useAuth } from '../auth/auth-context';
-import { getFriends, getRestaurantById } from '@/api_call/db_calls';
+import { getFriendsForUser, getRestaurantById } from '@/api_call/db_calls';
 
 export type friendsEntry = {id: Number, user_Id: Number, friend_id: Number};
 export type restoEntry = {id:Number, 
@@ -15,18 +15,19 @@ export type restoEntry = {id:Number,
   rating:Number, 
   food_array: string[]};
 
-export default async function Test(){
+export default function Test(){
   //const { user } = useAuth();
   const user = 1
     const [friendsList, setFriendsList] = useState([]);
     useEffect(() => {
-      getFriends(user).then((data) => {
+      getFriendsForUser(user).then((data) => {
         setFriendsList(data)
+        console.log("the friends list:", friendsList);
       });
     }, [])
     console.log("the friends list:", friendsList);
     // restosFriendsLike should be a map where the restaurant ids are the key and then we have 
-    const restosFriendsLike = new Map<Number, Number[]>();
+    /*const restosFriendsLike = new Map<Number, Number[]>();
     for (let friendEntry of friendsList){
       let tmp = (friendEntry as friendsEntry);
       let response = await getRestaurantById(tmp.friend_id);
@@ -42,9 +43,9 @@ export default async function Test(){
       }
     }
     console.log("the restosFriendsLike:", restosFriendsLike);
-
+*/
   //const { likedPlaces } = useLocalSearchParams();
-  useFocusEffect(
+  /*useFocusEffect(
     React.useCallback(() => {
      //alert('Screen was focused');
       // Call DB and load liked places
@@ -54,7 +55,7 @@ export default async function Test(){
         // Useful for cleanup functions
       };
     }, [])
-  );
+  );*/
 const windowWidth = Dimensions.get('window').width;
 const styles = StyleSheet.create({
   listContainer: {
@@ -91,23 +92,28 @@ const styles = StyleSheet.create({
 });
 
   let placeData = data;
+  // return (
+  //   <View className="h-full flex justify-center items-center">
+  //     <FlatList
+  //     data={placeData}
+  //     keyExtractor={(item, index) => `${item.name}-${index}`}
+  //     renderItem={({ item }) => (
+  //       <View style={styles.itemContainer}>
+  //         <Image source={{ uri: item.image }} style={styles.icon} />
+  //         <Text style={styles.name}>{item.name}</Text>
+  //       </View>
+  //     )}
+  //     ListHeaderComponent={
+  //       <Text style={styles.header}>Recently Liked</Text>
+  //     }
+  //     contentContainerStyle={styles.listContainer}
+  //   />
+  //   </View>
+  // );
   return (
-    <View className="h-full flex justify-center items-center">
-      <FlatList
-      data={placeData}
-      keyExtractor={(item, index) => `${item.name}-${index}`}
-      renderItem={({ item }) => (
-        <View style={styles.itemContainer}>
-          <Image source={{ uri: item.image }} style={styles.icon} />
-          <Text style={styles.name}>{item.name}</Text>
-        </View>
-      )}
-      ListHeaderComponent={
-        <Text style={styles.header}>Recently Liked</Text>
-      }
-      contentContainerStyle={styles.listContainer}
-    />
-    </View>
+    //<Text>{JSON.stringify(friendsList)}</Text>
+    <Text>Hello</Text>
+
   );
 }
-Test();
+//Test();

@@ -202,6 +202,18 @@ def search_users(request):
     response_data = [{"id": user.id, "username": user.username} for user in users]
     return JsonResponse(response_data, safe=False)
 
+@api_view(['GET'])
+def get_friends(request):
+    user_id = request.query_params.get("user_id")
+    if not user_id:
+        return Response(
+            {"error": "user_id is required"},
+            status=status.HTTP_400_BAD_REQUEST
+        )
+    friends = UserrFriends.objects.filter(user_id=user_id)
+    response_data = [{"friend_id": friend.friend_id} for friend in friends]
+    return JsonResponse(response_data, safe=False)
+
 # ----------- Auth Section ------------
 @api_view(['POST'])
 def login(request):
