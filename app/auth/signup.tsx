@@ -12,6 +12,7 @@ import {
   TouchableOpacity,
 } from "react-native";
 import axios from "axios";
+import { useAuth } from "./auth-context";
 
 const BASE_URL = "http://127.0.0.1:8000";
 const BASE_URL2 = "http://10.0.2.2:8000";
@@ -21,7 +22,9 @@ export default function SignUpForm() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const url = `${BASE_URL}/signup`;
+  const authurl = `${BASE_URL}/test_token`;
 
+  const { setUser } = useAuth();
   const router = useRouter();
 
   const handleSignUp = async () => {
@@ -48,8 +51,21 @@ export default function SignUpForm() {
           } else if (response.data.email) {
             Alert.alert("Please enter a valid email address!");
           } else {
-            router.push("/(tabs)");
-            Alert.alert("Success", `Welcome, ${response.data.user.username}!`);
+            //login
+            const authheaders = {
+              ...headers,
+              Authorization: `Token ${response.data.token}`,
+            };
+            axios
+              .get(authurl, { headers: authheaders })
+              .then(function (validationResponse) {
+                router.push("/(tabs)");
+                Alert.alert(
+                  "Success",
+                  `Welcome, ${response.data.user.username}!`
+                );
+                setUser(validationResponse.data);
+              });
           }
           // Handle successful response, e.g., navigate to a new screen
         } else {

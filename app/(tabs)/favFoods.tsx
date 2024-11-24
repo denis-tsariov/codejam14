@@ -147,57 +147,46 @@ export default function Test() {
         <View style={{ flex: 1, gap: 20, paddingBottom: 100 }}>
           {matchedUserRestaurants.map((resto, key) => (
             <Pressable
-              key={key}
-              className="h-20 border-2 rounded-xl"
+            key={key}
+            className="h-20 border-2 rounded-xl"
+            style={{
+              flex: 1,
+              flexDirection: "row",
+              alignItems: "center",
+              justifyContent: "space-between",
+              paddingRight: 20,
+              paddingLeft: 20,
+            }}
+            onPress={() => {}}
+          >
+            <View
               style={{
                 flex: 1,
-                flexDirection: "row",
+                flexDirection: "column",
                 alignItems: "center",
-                justifyContent: "space-between",
-                paddingRight: 20,
-                paddingLeft: 20,
+                justifyContent: "center",
+                gap: 10,
               }}
-              onPress={() => {}}
             >
+              <Text
+                style={{ fontSize: 16, fontWeight: "600", paddingTop: 10 }}
+              >
+                {resto.name}
+              </Text>
               <View
                 style={{
                   flex: 1,
                   flexDirection: "row",
-                  alignItems: "center",
-                  gap: 10,
+                  padding: 0,
+                  margin: 0,
                 }}
               >
-                <Text style={{ fontSize: 18 }}>{resto.name}</Text>
+                <Text>
+                  {"$".repeat(resto.cost as number) + " | " + resto.rating + " ⭐️"}
+                </Text>
               </View>
-              <Pressable
-                className="border-2"
-                style={{
-                  width: 80,
-                  height: 30,
-                  backgroundColor: "#1d4ed8",
-                  borderRadius: 12,
-                }}
-                onPress={async () => {}}
-              >
-                <View
-                  style={{
-                    flex: 1,
-                    alignItems: "center",
-                    justifyContent: "center",
-                  }}
-                >
-                  <Text
-                    style={{
-                      color: "white",
-                      fontSize: 16,
-                      textAlign: "center",
-                    }}
-                  >
-                    follow
-                  </Text>
-                </View>
-              </Pressable>
-            </Pressable>
+            </View>
+          </Pressable>
           ))}
         </View>
       ) : (

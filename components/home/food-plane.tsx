@@ -17,7 +17,10 @@ const FoodPlane = ({ restaurant }: any) => {
         source={{ uri: restaurant.food_array[imageIndex] }}
         style={{ width: "100%", height: "100%" }}
       />
-      <Text className="absolute text-4xl font-semibold bottom-0 pb-20 px-4 text-white w-full shadow-md">
+      <Text
+        className="absolute text-4xl font-semibold bottom-0 pb-20 px-4 text-white w-full shadow-ms"
+        style={{ backgroundImage: "linear-gradient(red, yellow)" }}
+      >
         {restaurant.name}
       </Text>
       <Text className="absolute px-4 top-[38rem] h-20 text-white truncate shadow-md flex flex-col">

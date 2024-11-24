@@ -12,6 +12,7 @@ import {
 } from "react-native";
 import axios from "axios";
 import { useAuth } from "./auth-context";
+import { useRouter } from "expo-router";
 
 const BASE_URL = 'http://127.0.0.1:8000';
 const BASE_URL2 = 'http://10.0.2.2:8000';
@@ -22,6 +23,7 @@ export default function Modal() {
   const url = `${BASE_URL}/login`;
   const authurl = `${BASE_URL}/test_token`;
   const { user, setUser } = useAuth();
+  const router = useRouter();
 
   const handleLogIn = async () => {
     if (!name || !password) {
@@ -45,6 +47,7 @@ export default function Modal() {
         axios
           .get(authurl, { headers: authheaders })
           .then(function (validationResponse) {
+            router.push("/(tabs)");
             Alert.alert("Successfully logged in !");
             setUser(validationResponse.data)
           }) // Handle successful response, navigate to the profile screen

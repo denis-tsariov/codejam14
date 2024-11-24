@@ -1,11 +1,17 @@
 import { Tabs } from "expo-router";
 import React from "react";
-import {useState} from "react";
+import { useState } from "react";
 import { Platform } from "react-native";
 
 import { HapticTab } from "@/components/HapticTab";
 import { useColorScheme } from "@/hooks/useColorScheme";
-import { Utensils, UserRoundSearch, User } from "lucide-react-native";
+import {
+  Utensils,
+  UserRoundSearch,
+  User,
+  Heart,
+  HeartHandshake,
+} from "lucide-react-native";
 import { serverPlaceData } from "@/hooks/filterPlacesData";
 export default function TabLayout() {
   const colorScheme = useColorScheme();
@@ -34,21 +40,28 @@ export default function TabLayout() {
           tabBarIcon: ({ color }) => <UserRoundSearch color={color} />,
         }}
       />
+
+      <Tabs.Screen
+        name="favFoods"
+        options={{
+          title: "Food Match",
+          tabBarIcon: ({ color }) => <HeartHandshake color={color} />,
+        }}
+      />
       <Tabs.Screen
         name="index"
         options={{
-          title: "Food",
+          title: "Find Food",
           tabBarIcon: ({ color }) => <Utensils color={color} />,
         }}
         //children={()=><Test propName={likedPlaces}/>}
       />
       <Tabs.Screen
-        name="favFoods"
+        name="myFoods"
         options={{
-          title: "FavFoods",
-          tabBarIcon: ({ color }) => <Utensils color={color} />,
+          title: "My likes",
+          tabBarIcon: ({ color }) => <Heart color={color} />,
         }}
-        
       />
       <Tabs.Screen
         name="my-profile"
@@ -57,14 +70,9 @@ export default function TabLayout() {
           tabBarIcon: ({ color }) => <User color={color} />,
         }}
       />
-      <Tabs.Screen  
-        name="login"
-        options={{ title: "Login" }}
-      />
-      <Tabs.Screen  
-        name="signup"
-        options={{ title: "SignUp" }}
-      />
+
+      <Tabs.Screen name="login" options={{ title: "Login" }} />
+      <Tabs.Screen name="signup" options={{ title: "SignUp" }} />
     </Tabs>
   );
 }

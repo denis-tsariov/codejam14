@@ -30,8 +30,10 @@ export default function TabTwoScreen() {
   }, [user]);
 
   const updateSearch = (value: React.SetStateAction<string>) => {
-    console.log(data)
-    getFriendsForUser(user!.id).then((isFriend) => {console.log("friends", isFriend)})
+    console.log(data);
+    getFriendsForUser(user!.id).then((isFriend) => {
+      console.log("friends", isFriend);
+    });
     setSearch(value);
 
     if (value) {
@@ -55,28 +57,24 @@ export default function TabTwoScreen() {
       setData(data);
       getFriendsForUser(user!.id).then((isFriend) => {
         console.log("friends", data);
-        setData(data.map((item: User) => (
-
-          {
-          ...item,
-          relationship: (
-             item.id.toString() == user!.id ? 
-              "self" : 
-              (isFriend.some((friend: any) => friend.friend_id === item.id) ? 
-                "friend" : 
-                "not friend")),
-        })));
+        setData(
+          data.map((item: User) => ({
+            ...item,
+            relationship:
+              item.id.toString() == user!.id
+                ? "self"
+                : isFriend.some((friend: any) => friend.friend_id === item.id)
+                ? "friend"
+                : "not friend",
+          }))
+        );
       });
-
-      useEffect(() => {setFilteredData(data);}, [data]);
-      
     });
-    setTimeout(() => {
-      updateSearch('m');
-      updateSearch('');
-    }, 500)
-    
   }, []);
+
+  useEffect(() => {
+    setFilteredData(data);
+  }, [data]);
 
   if (!user) {
     return <NotLoggedIn />;
@@ -129,56 +127,63 @@ export default function TabTwoScreen() {
                   {friend.username}
                 </Text>
               </View>
-              {(friend.relationship == "not friend") && <Pressable
-                className="border-2"
-                style={{
-                  width: 80,
-                  height: 30,
-                  backgroundColor: "#1d4ed8",
-                  borderRadius: 12,
-                }}
-                onPress={async () => {
-                  const data = {
-                    user_id: user.id,
-                    friend_id: friend.id,
-                  };
-                  console.log("follow pressed", data);
-                make_friend(data).then((resp) => {
-                  const updatedFriend = { ...friend, relationship: "friend" };
-                  console.log("updatedFriend", updatedFriend);
-                  setData((prevData: User[]) =>
-                    prevData.map((item: User) =>
-                      item.id === friend.id ? updatedFriend : item
-                    )
-                  );
-
-                  setFilteredData((prevFilteredData) =>
-                    prevFilteredData.map((item) =>
-                      item.id === friend.id ? updatedFriend : item
-                    )
-                  );
-                }).catch((err) => console.log("error", err));
-                }}
-              >
-                <View
+              {friend.relationship == "not friend" && (
+                <Pressable
+                  className="border-2"
                   style={{
-                    flex: 1,
-                    alignItems: "center",
-                    justifyContent: "center",
+                    width: 80,
+                    height: 30,
+                    backgroundColor: "#1d4ed8",
+                    borderRadius: 12,
+                  }}
+                  onPress={async () => {
+                    const data = {
+                      user_id: user.id,
+                      friend_id: friend.id,
+                    };
+                    console.log("follow pressed", data);
+                    make_friend(data)
+                      .then((resp) => {
+                        const updatedFriend = {
+                          ...friend,
+                          relationship: "friend",
+                        };
+                        console.log("updatedFriend", updatedFriend);
+                        setData((prevData: User[]) =>
+                          prevData.map((item: User) =>
+                            item.id === friend.id ? updatedFriend : item
+                          )
+                        );
+
+                        setFilteredData((prevFilteredData) =>
+                          prevFilteredData.map((item) =>
+                            item.id === friend.id ? updatedFriend : item
+                          )
+                        );
+                      })
+                      .catch((err) => console.log("error", err));
                   }}
                 >
-                  <Text
+                  <View
                     style={{
-                      color: "white",
-                      fontSize: 16,
-                      textAlign: "center",
-                      fontWeight: "600",
+                      flex: 1,
+                      alignItems: "center",
+                      justifyContent: "center",
                     }}
                   >
-                     follow
-                  </Text>
-                </View>
-              </Pressable>}
+                    <Text
+                      style={{
+                        color: "white",
+                        fontSize: 16,
+                        textAlign: "center",
+                        fontWeight: "600",
+                      }}
+                    >
+                      follow
+                    </Text>
+                  </View>
+                </Pressable>
+              )}
             </Pressable>
           ))}
         </View>

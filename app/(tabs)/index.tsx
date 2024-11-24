@@ -92,23 +92,28 @@ export default function HomeScreen() {
           onSwipedAll={() => {
             console.log("onSwipedAll");
           }}
-          onSwipedRight={ () => {
+          onSwipedRight={() => {
             // have to check for a collision with someone
             console.log(restosFriendsLike);
-            console.log("current restaurant id", restaurants[restaurantIndex].id);
+            console.log(
+              "current restaurant id",
+              restaurants[restaurantIndex].id
+            );
             if (restosFriendsLike.has(restaurants[restaurantIndex].id)) {
               Alert.alert("New Match", "You have a new match!");
             }
-            const data = {
-              user_id: user.id,
-              restos: restaurants[restaurantIndex].id,
-              listname: "saved",
-            };
-            //console.log(data);
-            createMapRecord(data);
-            getRestaurantsForUser(user.id).then((response) => {
-              //console.log("get", response);
-            });
+            if (user) {
+              const data = {
+                user_id: user.id,
+                restos: restaurants[restaurantIndex].id,
+                listname: "saved",
+              };
+              //console.log(data);
+              createMapRecord(data);
+              getRestaurantsForUser(user.id).then((response) => {
+                //console.log("get", response);
+              });
+            }
           }}
         />
       </View>
