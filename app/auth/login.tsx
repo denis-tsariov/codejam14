@@ -13,8 +13,8 @@ import {
 import axios from "axios";
 import { useAuth } from "./auth-context";
 
-const BASE_URL2 = 'http://127.0.0.1:8000';
-const BASE_URL = 'http://10.0.2.2:8000';
+const BASE_URL = 'http://127.0.0.1:8000';
+const BASE_URL2 = 'http://10.0.2.2:8000';
 
 export default function Modal() {
   const [name, setName] = useState("");

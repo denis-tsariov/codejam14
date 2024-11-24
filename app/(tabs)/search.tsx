@@ -1,8 +1,17 @@
-import { StyleSheet, View, Text, Button, Alert } from "react-native";
+import {
+  StyleSheet,
+  View,
+  Text,
+  Button,
+  Alert,
+  ScrollView,
+  Pressable,
+} from "react-native";
 import { useAuth } from "../auth/auth-context";
 import React, { useEffect, useState } from "react";
 import { Searchbar } from "react-native-paper";
 import { getUsers } from "../../api_call/db_calls.js";
+import { User } from "lucide-react-native";
 
 export default function TabTwoScreen() {
   const { user } = useAuth();
@@ -43,9 +52,19 @@ export default function TabTwoScreen() {
   }, []);
 
   return (
-    <View style={styles.container}>
+    <ScrollView
+      style={{
+        position: "absolute",
+        paddingTop: 60,
+        height: "100%",
+        width: "100%",
+        paddingLeft: 20,
+        paddingRight: 20,
+      }}
+      className=""
+    >
       {user ? (
-        <View style={styles.container}>
+        <View style={{ flex: 1, gap: 20, paddingBottom: 100 }}>
           <Searchbar
             placeholder="Search..."
             onChangeText={updateSearch}
@@ -53,15 +72,59 @@ export default function TabTwoScreen() {
             style={styles.searchBar}
           />
           {filteredData.map((user: User, key) => (
-            <View key={key} style={styles.users}>
-              <Button title={user.username} onPress={() => handlePress(user)} />
-            </View>
+            <Pressable
+              key={key}
+              className="h-20 border-2 rounded-xl"
+              style={{
+                flex: 1,
+                flexDirection: "row",
+                alignItems: "center",
+                justifyContent: "space-between",
+                paddingRight: 20,
+                paddingLeft: 20
+              }}
+              onPress={() => handlePress(user)}
+            >
+              <View
+                style={{
+                  flex: 1,
+                  flexDirection: "row",
+                  alignItems: "center",
+                  gap: 10,
+                }}
+              >
+                <User color={"black"} />
+                <Text style={{ fontSize: 18 }}>{user.username}</Text>
+              </View>
+              <Pressable
+                className="border-2"
+                style={{
+                  width: 80,
+                  height: 30,
+                  backgroundColor: "#1d4ed8",
+                  borderRadius: 12,
+                }}
+                onPress={() => console.log("follow pressed")}
+              >
+                <View
+                  style={{
+                    flex: 1,
+                    alignItems: "center",
+                    justifyContent: "center",
+                  }}
+                >
+                  <Text style={{ color: "white", fontSize: 16, textAlign:"center" }}>
+                    follow
+                  </Text>
+                </View>
+              </Pressable>
+            </Pressable>
           ))}
         </View>
       ) : (
         <Text>Please Log in to use this feature !</Text>
       )}
-    </View>
+    </ScrollView>
   );
 }
 
