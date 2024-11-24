@@ -20,7 +20,7 @@ const postData = async (endpoint, data) => {
   };
   try {
     const response = await axios.post(`${BASE_URL}/${endpoint}`, data, header);
-    console.log("resp.data", response.data);
+    //console.log("resp.data", response.data);
     return response.data;
   } catch (error) {
     handleError(error);
@@ -89,7 +89,7 @@ export const getRestaurantFoodImages = async (id) => {
 
 // add a new record to the map table
 export const addMapRecord = async (data) => {
-  console.log("function", data);
+  //console.log("function", data);
   return await postData("maps", data);
 };
 
@@ -132,7 +132,7 @@ export const getFriends = async (user1_id) => {
 // function to get a list of restaurants for a certain user from the maps table
 export const getRestaurantsForUser = async (user_id) => {
   try {
-    console.log(`${BASE_URL}/maps/user_maps/?user_id=${user_id}`);
+    //console.log(`${BASE_URL}/maps/user_maps/?user_id=${user_id}`);
     const response = await axios.get(
       `${BASE_URL}/maps/user_maps/?user_id=${user_id}`
     );
