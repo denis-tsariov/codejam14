@@ -133,6 +133,20 @@ def add_restaurant_to_map(request):
     serializer = MapsSerializer(map_instance)
     return Response(serializer.data, status=status.HTTP_201_CREATED)
 
+@api_view(['POST'])
+def add_friend(request):
+    user_id = request.data.get("user_id")
+    friend_id = request.data.get("friend_id")
+    if not user_id or not friend_id:
+        return Response(
+            {"error": "user_id and friend_id are required"},
+            status=status.HTTP_400_BAD_REQUEST
+        )
+    # Create a new friend
+    friend_instance = UserrFriends.objects.create(user_id=user_id, friend_id=friend_id)
+    serializer = FriendSerializer(friend_instance)
+    return Response(serializer.data, status=status.HTTP_201_CREATED)
+
 class MapsCommonRestaurants(APIView): 
     def get(self, request, format=None):
             user1_id = request.query_params.get('user1_id')

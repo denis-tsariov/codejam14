@@ -12,6 +12,7 @@ import React, { useEffect, useState } from "react";
 import { Searchbar } from "react-native-paper";
 import { getUsers } from "../../api_call/db_calls.js";
 import { User } from "lucide-react-native";
+import { make_friend } from "../../api_call/db_calls";
 
 export default function TabTwoScreen() {
   const { user } = useAuth();
@@ -71,7 +72,7 @@ export default function TabTwoScreen() {
             value={search}
             style={styles.searchBar}
           />
-          {filteredData.map((user: User, key) => (
+          {filteredData.map((friend: User, key) => (
             <Pressable
               key={key}
               className="h-20 border-2 rounded-xl"
@@ -83,7 +84,7 @@ export default function TabTwoScreen() {
                 paddingRight: 20,
                 paddingLeft: 20
               }}
-              onPress={() => handlePress(user)}
+              onPress={() => handlePress(friend)}
             >
               <View
                 style={{
@@ -94,7 +95,7 @@ export default function TabTwoScreen() {
                 }}
               >
                 <User color={"black"} />
-                <Text style={{ fontSize: 18 }}>{user.username}</Text>
+                <Text style={{ fontSize: 18 }}>{friend.username}</Text>
               </View>
               <Pressable
                 className="border-2"
@@ -104,7 +105,14 @@ export default function TabTwoScreen() {
                   backgroundColor: "#1d4ed8",
                   borderRadius: 12,
                 }}
-                onPress={() => console.log("follow pressed")}
+                onPress={async () => {
+                  const data = {
+                    user_id: user.id,
+                    friend_id: friend.id,
+                  };
+                  console.log("follow pressed", data)
+                  make_friend(data).then((resp) => console.log("resp", resp));
+                }}
               >
                 <View
                   style={{

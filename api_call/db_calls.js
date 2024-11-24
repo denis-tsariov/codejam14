@@ -165,6 +165,10 @@ export const createMapRecord = async (data) => {
   return await postData("maps/add_resto_to_map", data);
 }
 
+export const make_friend = async (data) => {
+  return await postData("friends/add_friend", data);
+}
+
 // export all functions as a module
 export default {
     getRestaurants,
@@ -180,7 +184,8 @@ export default {
     getUserByUsername,
     getFriends, 
     createMapRecord,
-    getFriendsForUser
+    getFriendsForUser, 
+    make_friend
   };
 
 
