@@ -110,6 +110,21 @@ class MapsList(APIView):
     
         serializer = MapsSerializer(maps, many=True)
         return Response(serializer.data, status=status.HTTP_200_OK)
+    
+@api_view(['POST'])
+def add_restaurant_to_map(request):
+    user_id = request.data.get("user_id")
+    restos = request.data.get("restos")
+    listname = request.data.get("listname")
+    if not user_id or not restos or not listname:
+        return Response(
+            {"error": "user_id, restos, and listname are required"},
+            status=status.HTTP_400_BAD_REQUEST
+        )
+    # Create a new map
+    map_instance = Maps.objects.create(user_id=user_id, restos=restos, listname=listname)
+    serializer = MapsSerializer(map_instance)
+    return Response(serializer.data, status=status.HTTP_201_CREATED)
 
 class MapsCommonRestaurants(APIView): 
     def get(self, request, format=None):

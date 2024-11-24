@@ -8,6 +8,7 @@ import {
   addMapRecord,
   getRestaurants,
   getRestaurantsForUser,
+  createMapRecord,
 } from "@/api_call/db_calls";
 import { useAuth } from "../auth/auth-context";
 
@@ -74,14 +75,13 @@ export default function HomeScreen() {
           }}
           onSwipedRight={async () => {
             const data = {
-              'user_id': user.id,
-              'restos': restaurants[restaurantIndex].id,
-              'listname': "saved",
+              user_id: user.id,
+              restos: restaurants[restaurantIndex].id,
+              listname: "saved",
             };
             console.log(data)
-            addMapRecord({
-              data,
-            }).then((resp) => console.log("resp", resp));
+            //addMapRecord({
+            createMapRecord(data).then((resp) => console.log("resp", resp));
             getRestaurantsForUser(user.id).then((response) => {
               console.log(response.data);
             });

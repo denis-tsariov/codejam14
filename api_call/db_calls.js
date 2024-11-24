@@ -145,6 +145,10 @@ export const getUserByUsername = async (username) => {
   }
 };
 
+export const createMapRecord = async (data) => {
+  return await postData("maps/add_resto_to_map", data);
+}
+
 // export all functions as a module
 export default {
     getRestaurants,
@@ -158,7 +162,8 @@ export default {
     getRestaurantsForUser, 
     getUsers, 
     getUserByUsername,
-    getFriends
+    getFriends, 
+    createMapRecord
   };
 
 
