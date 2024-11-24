@@ -105,7 +105,7 @@ export default function HomeScreen() {
               listname: "saved",
             };
             //console.log(data);
-            // createMapRecord(data).then((resp) => console.log("resp", resp));
+            createMapRecord(data);
             getRestaurantsForUser(user.id).then((response) => {
               //console.log("get", response);
             });

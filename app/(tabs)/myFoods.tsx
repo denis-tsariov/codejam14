@@ -16,15 +16,20 @@ export type restoEntry = {id:number,
   food_array: string[]};
 
 export default function Test(){
-    //const { user } = useAuth();
-    const user = 1
+    const { user } = useAuth();
+    //const user = 1
     const [userRestaurants, setUserRestaurants] = useState<restoEntry[]>([]);
-    useEffect(() => {
-        getRestaurantsForUser(user).then((data) => {
-            console.log("get", data); // Ensure this logs the expected data
+    useFocusEffect(
+      React.useCallback(() => {
+      if (user){
+        //console.log("This is the user in teh useEffect of myfoods", user);
+        getRestaurantsForUser(user.id).then((data) => {
+            //console.log("get in myFoods", data); // Ensure this logs the expected data
             setUserRestaurants(data); // Update state with fetched restaurants
         });
-    }, []);
+      }
+      return () => {};
+    },[]));
 
     if (userRestaurants.length === 0) {
         return (
