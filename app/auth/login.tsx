@@ -8,15 +8,19 @@ import {
   StyleSheet,
   KeyboardAvoidingView,
   Platform,
+  TouchableOpacity,
 } from "react-native";
 import axios from "axios";
 import { useAuth } from "./auth-context";
 
+const BASE_URL = 'http://127.0.0.1:8000';
+const BASE_URL2 = 'http://10.0.2.2:8000';
+
 export default function Modal() {
   const [name, setName] = useState("");
   const [password, setPassword] = useState("");
-  const url = "http://10.0.2.2:8000/login";
-  const authurl = "http://10.0.2.2:8000/test_token";
+  const url = `${BASE_URL}/login`;
+  const authurl = `${BASE_URL}/test_token`;
   const { user, setUser } = useAuth();
 
   const handleLogIn = async () => {
@@ -60,7 +64,8 @@ export default function Modal() {
       behavior={Platform.OS === "ios" ? "padding" : "height"}
       style={styles.container}
     >
-      <Text style={styles.title}>Sign Up</Text>
+      <Text style={styles.welcome}>Welcome Back</Text>
+      <Text style={styles.title}>Log In</Text>
 
       <TextInput
         style={styles.input}
@@ -77,7 +82,10 @@ export default function Modal() {
         onChangeText={setPassword}
       />
 
-      <Button title="Log In" onPress={handleLogIn} />
+      {/* <Button title="Log In" onPress={handleLogIn} /> */}
+      <TouchableOpacity style={styles.squareButton} onPress={handleLogIn} >
+        <Text style={styles.buttonText}>Log In</Text>
+      </TouchableOpacity>
     </KeyboardAvoidingView>
   );
 }
@@ -91,15 +99,35 @@ const styles = StyleSheet.create({
   },
   title: {
     fontSize: 24,
-    fontWeight: "bold",
     marginBottom: 20,
   },
   input: {
-    width: "100%",
+    width: "90%",
+    height: 45,
     borderWidth: 1,
     borderColor: "#ccc",
     borderRadius: 5,
     padding: 10,
     marginBottom: 15,
+  },
+  welcome: {
+    fontSize: 26,
+    fontWeight: "bold",
+    marginBottom: 5,
+  },
+  squareButton: {
+    width: 100, // Set width and height to make it square
+    height: 50,
+    borderWidth: 2,
+    borderColor: "#000", // Black border color
+    borderRadius: 10, // Rounded corners
+    justifyContent: "center",
+    alignItems: "center",
+    backgroundColor: "transparent", // Transparent background
+    marginBottom: 15, // Add some spacing between buttons
+  },
+  buttonText: {
+    fontSize: 16,
+    fontWeight: "bold",
   },
 });
