@@ -63,6 +63,7 @@ urlpatterns = [
          views.MapsUserList.as_view(), 
          name='user-maps'
         ),
+    re_path('add_resto_to_map', views.add_restaurant_to_map),
     re_path('login', views.login),
     re_path('signup', views.signup),
     re_path('test_token', views.test_token),

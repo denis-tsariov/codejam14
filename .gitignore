@@ -40,8 +40,8 @@ env
 env
 bun.lockb
 
-db.sqlite3
+API/mysite/db.sqlite3
 ios
 
 #API migrations
-migrations
+API/mysite/api/migrations

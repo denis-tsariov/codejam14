@@ -16,18 +16,21 @@ export type restoEntry = {id:Number,
   food_array: string[]};
 
 export default async function Test(){
-  const { user } = useAuth();
+  //const { user } = useAuth();
+  const user = 1
     const [friendsList, setFriendsList] = useState([]);
     useEffect(() => {
       getFriends(user).then((data) => {
         setFriendsList(data)
       });
     }, [])
+    console.log("the friends list:", friendsList);
     // restosFriendsLike should be a map where the restaurant ids are the key and then we have 
     const restosFriendsLike = new Map<Number, Number[]>();
     for (let friendEntry of friendsList){
       let tmp = (friendEntry as friendsEntry);
       let response = await getRestaurantById(tmp.friend_id);
+      console.log("the response from friend", tmp.friend_id, ":", response);
       for (let restoEntry of response){
         let tmpResto = (restoEntry as restoEntry);
         if (restosFriendsLike.has(tmpResto.id)){
@@ -38,6 +41,7 @@ export default async function Test(){
         }
       }
     }
+    console.log("the restosFriendsLike:", restosFriendsLike);
 
   //const { likedPlaces } = useLocalSearchParams();
   useFocusEffect(
@@ -106,3 +110,4 @@ const styles = StyleSheet.create({
     </View>
   );
 }
+Test();
