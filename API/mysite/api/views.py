@@ -99,6 +99,13 @@ class MapsRetrieveUpdateDestroy(generics.RetrieveUpdateDestroyAPIView):
     lookup_field = "pk"
 
 class MapsList(APIView):
+    def post(self, request, *args, **kwargs):
+        serializer = MapsSerializer(data=request.data)
+        if serializer.is_valid():
+            serializer.save()
+            return Response(serializer.data, status=status.HTTP_201_CREATED)
+        return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
+
     def get(self, request, format=None):
         listname = request.query_params.get("listname", "")
 

@@ -78,12 +78,15 @@ export default function HomeScreen() {
               user_id: user.id,
               restos: restaurants[restaurantIndex].id,
               listname: "saved",
+              user_id: user.id,
+              restos: restaurants[restaurantIndex].id,
+              listname: "saved",
             };
             console.log(data)
             //addMapRecord({
             createMapRecord(data).then((resp) => console.log("resp", resp));
             getRestaurantsForUser(user.id).then((response) => {
-              console.log(response.data);
+              console.log("get", response);
             });
           }}
         />

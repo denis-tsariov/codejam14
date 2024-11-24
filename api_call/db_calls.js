@@ -14,8 +14,12 @@ const fetchData = async (endpoint) => {
 
 // Generic function for handling POST requests
 const postData = async (endpoint, data) => {
+  const header = {
+    "Content-Type": "application/json",
+  };
   try {
-    const response = await axios.post(`${BASE_URL}/${endpoint}`, data);
+    const response = await axios.post(`${BASE_URL}/${endpoint}`, data, header);
+    console.log("resp.data", response.data);
     return response.data;
   } catch (error) {
     handleError(error);
@@ -117,9 +121,10 @@ export const getFriends = async (user1_id) => {
 // function to get a list of restaurants for a certain user from the maps table
 export const getRestaurantsForUser = async (user_id) => {
   try {
-    const response = await axios.get(`${BASE_URL}/maps/`, {
-      params: { user_id },
-    });
+    console.log(`${BASE_URL}/maps/user_maps/?user_id=${user_id}`);
+    const response = await axios.get(
+      `${BASE_URL}/maps/user_maps/?user_id=${user_id}`
+    );
     return response.data;
   } catch (error) {
     console.error("Error fetching restaurants for user:", error);
@@ -151,6 +156,7 @@ export const createMapRecord = async (data) => {
 
 // export all functions as a module
 export default {
+<<<<<<< Updated upstream
     getRestaurants,
     getRestaurantsWithPagination,
     getRestaurantById,
@@ -166,6 +172,21 @@ export default {
     createMapRecord
   };
 
+=======
+  getRestaurants,
+  getRestaurantsWithPagination,
+  getRestaurantById,
+  getRestaurantFoodImages,
+  addMapRecord,
+  updateMapRecord,
+  deleteMapRecord,
+  getCommonRestaurants,
+  getRestaurantsForUser,
+  getUsers,
+  getUserByUsername,
+  addMapRed,
+};
+>>>>>>> Stashed changes
 
 /*
 functions we need:
