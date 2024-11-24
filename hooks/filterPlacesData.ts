@@ -138,5 +138,5 @@ export function filteredJSONtoTableJSON(inputFileName : string, outputFileName: 
    
 }
 
-//filterData();
-filteredJSONtoTableJSON("./filteredPlaceData.json", "serverPlaceData.json")
+filterData("./places_data20.json", "./filteredPlaceData20.json");
+filteredJSONtoTableJSON("./filteredPlaceData20.json", "serverPlaceData20.json")

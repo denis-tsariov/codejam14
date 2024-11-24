@@ -22,6 +22,7 @@ const windowWidth = Dimensions.get('window').width;
 const styles = StyleSheet.create({
   listContainer: {
     padding: 10,
+    marginTop: 10
   },
   itemContainer: {
     flexDirection: 'row',
@@ -33,6 +34,12 @@ const styles = StyleSheet.create({
     borderWidth: 1,
     borderColor: '#ddd',
     width: windowWidth*0.90
+  },
+  header: {
+    fontSize: 22,
+    fontWeight: 'bold',
+    marginBottom: 10,
+    alignSelf: 'center',
   },
   icon: {
     width: 40,
@@ -49,7 +56,6 @@ const styles = StyleSheet.create({
   let placeData = data;
   return (
     <View className="h-full flex justify-center items-center">
-      <Text>test</Text>
       <FlatList
       data={placeData}
       keyExtractor={(item, index) => `${item.name}-${index}`}
@@ -59,6 +65,9 @@ const styles = StyleSheet.create({
           <Text style={styles.name}>{item.name}</Text>
         </View>
       )}
+      ListHeaderComponent={
+        <Text style={styles.header}>Recently Liked</Text>
+      }
       contentContainerStyle={styles.listContainer}
     />
     </View>

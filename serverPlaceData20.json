@@ -1,0 +1,206 @@
+[
+  {
+    "name": "In-N-Out Burger",
+    "location": { "latitude": 37.8077951, "longitude": -122.41851189999998 },
+    "cost": 1,
+    "rating": 4.3,
+    "food_array": [
+      "https://www.google.com/maps/place//data=!3m4!1e2!3m2!1sAF1QipMWLW9oqpXIqcoH8OAWC8O6hhoJA6rOAX8VThUI!2e10!4m2!3m1!1s0x808580e3d1434971:0x8ff48dc78f89c1b9"
+    ]
+  },
+  {
+    "name": "Fairmont San Francisco",
+    "location": { "latitude": 37.7923897, "longitude": -122.41044429999998 },
+    "cost": 3,
+    "rating": 4.5,
+    "food_array": [
+      "https://www.google.com/maps/place//data=!3m4!1e2!3m2!1sAF1QipPMqtt0_0aOd95ahcACrAJpEXdjOFha9asg4Hyw!2e10!4m2!3m1!1s0x8085808d10b86437:0xcf0541d7a109ef4",
+      "https://www.google.com/maps/place//data=!3m4!1e2!3m2!1sAF1QipNnjbMJPwiteyAGjulCSNJxtNvoU9MFx20AcLtk!2e10!4m2!3m1!1s0x8085808d10b86437:0xcf0541d7a109ef4",
+      "https://www.google.com/maps/place//data=!3m4!1e2!3m2!1sAF1QipOw2JKZoq1TztaIT07hD8SKquh10GJY-2JbT2rY!2e10!4m2!3m1!1s0x8085808d10b86437:0xcf0541d7a109ef4"
+    ]
+  },
+  {
+    "name": "Tony's Pizza Napoletana",
+    "location": { "latitude": 37.8003359, "longitude": -122.40902270000001 },
+    "cost": 2,
+    "rating": 4.5,
+    "food_array": []
+  },
+  {
+    "name": "House of Prime Rib",
+    "location": { "latitude": 37.7934329, "longitude": -122.42273200000001 },
+    "cost": 3,
+    "rating": 4.7,
+    "food_array": []
+  },
+  {
+    "name": "The Grove - Yerba Buena",
+    "location": {
+      "latitude": 37.786542399999995,
+      "longitude": -122.40198620000001
+    },
+    "cost": 2,
+    "rating": 4.4,
+    "food_array": [
+      "https://www.google.com/maps/place//data=!3m4!1e2!3m2!1sAF1QipOZkd3eP-WtBKYesbY1Q91T5KBnWos0LvV-SiSr!2e10!4m2!3m1!1s0x80858087ec8d9c89:0x74ef87a11bfe299c"
+    ]
+  },
+  {
+    "name": "Gary Danko",
+    "location": { "latitude": 37.8058651, "longitude": -122.42060430000001 },
+    "cost": 4,
+    "rating": 4.6,
+    "food_array": [
+      "https://www.google.com/maps/place//data=!3m4!1e2!3m2!1sAF1QipMsObnmZff_aTIdM2cM__6ICvCU5VpOdOXw9N8-!2e10!4m2!3m1!1s0x808580e125367eab:0x8ee57d9f647dbc1",
+      "https://www.google.com/maps/place//data=!3m4!1e2!3m2!1sAF1QipPtT8MGBaq_jNbEH6ItytRkcLPyFA7hbbMsZil8!2e10!4m2!3m1!1s0x808580e125367eab:0x8ee57d9f647dbc1"
+    ]
+  },
+  {
+    "name": "Sotto Mare",
+    "location": { "latitude": 37.7997503, "longitude": -122.40834489999999 },
+    "cost": 2,
+    "rating": 4.6,
+    "food_array": [
+      "https://www.google.com/maps/place//data=!3m4!1e2!3m2!1sAF1QipM8WDYwkrEP6y-nx46LSayfsQPn6Z7BXXIVTs-C!2e10!4m2!3m1!1s0x808580f15632f641:0xa45875806e285c25",
+      "https://www.google.com/maps/place//data=!3m4!1e2!3m2!1sAF1QipOe4AnjwwDIgK6Xkr9KrJC9aPc9O7PYNz9v7vxR!2e10!4m2!3m1!1s0x808580f15632f641:0xa45875806e285c25"
+    ]
+  },
+  {
+    "name": "Fog Harbor Fish House",
+    "location": { "latitude": 37.8089898, "longitude": -122.41029279999998 },
+    "cost": 3,
+    "rating": 4.5,
+    "food_array": [
+      "https://www.google.com/maps/place//data=!3m4!1e2!3m2!1sAF1QipNsnEXB9eB_BVOXQqPKaUjFLOTfACV4FajQ1RIK!2e10!4m2!3m1!1s0x808580fc8bb3211d:0x5a423e79bde2d7a6",
+      "https://www.google.com/maps/place//data=!3m4!1e2!3m2!1sAF1QipOOqC4g19McSL5Pq8wk9yjZ2an_T3V4sfFf2Bza!2e10!4m2!3m1!1s0x808580fc8bb3211d:0x5a423e79bde2d7a6",
+      "https://www.google.com/maps/place//data=!3m4!1e2!3m2!1sAF1QipP8CadsMdPQDMvjXDqxmwSrc2J8eyGAbR-HFS58!2e10!4m2!3m1!1s0x808580fc8bb3211d:0x5a423e79bde2d7a6"
+    ]
+  },
+  {
+    "name": "La Mar Cocina Peruana San Francisco",
+    "location": { "latitude": 37.7971645, "longitude": -122.3953359 },
+    "cost": 3,
+    "rating": 4.5,
+    "food_array": [
+      "https://www.google.com/maps/place//data=!3m4!1e2!3m2!1sAF1QipPgDxjB6fWk4L-DCnAwOUa8PVgpnDnoR4PJ6SLS!2e10!4m2!3m1!1s0x8085806737ca1051:0xaa881a41cd0c4037",
+      "https://www.google.com/maps/place//data=!3m4!1e2!3m2!1sAF1QipPK9KCZcRySdJ5ROGQ81dcyvxqseTJJPfw62JfO!2e10!4m2!3m1!1s0x8085806737ca1051:0xaa881a41cd0c4037"
+    ]
+  },
+  {
+    "name": "Kokkari Estiatorio",
+    "location": { "latitude": 37.7970323, "longitude": -122.3997559 },
+    "cost": 4,
+    "rating": 4.7,
+    "food_array": []
+  },
+  {
+    "name": "Waterbar Restaurant",
+    "location": { "latitude": 37.7904926, "longitude": -122.3890417 },
+    "cost": 3,
+    "rating": 4.5,
+    "food_array": [
+      "https://www.google.com/maps/place//data=!3m4!1e2!3m2!1sAF1QipMVRcOjMsCFmACI7wCjEbIhpTnLMz0v6C2fEQon!2e10!4m2!3m1!1s0x808580701a2e7981:0xaf3b5f75b122566d",
+      "https://www.google.com/maps/place//data=!3m4!1e2!3m2!1sAF1QipOeh0RJqJtPN8aHNl6wdZJg4xbixZ5LUNZVEvz3!2e10!4m2!3m1!1s0x808580701a2e7981:0xaf3b5f75b122566d"
+    ]
+  },
+  {
+    "name": "The Buena Vista",
+    "location": { "latitude": 37.8065338, "longitude": -122.42071849999999 },
+    "cost": 2,
+    "rating": 4.6,
+    "food_array": [
+      "https://www.google.com/maps/place//data=!3m4!1e2!3m2!1sAF1QipNRvONnHCTo2xq1XFhOqwOjeCkMJs1BvFIBDk7z!2e10!4m2!3m1!1s0x808f7e37f0d196f9:0xcf2a7b909a94bfc3",
+      "https://www.google.com/maps/place//data=!3m4!1e2!3m2!1sAF1QipMWn-mC0Co8CIRovmw2N0HAqs_LSRvykXBoXxRX!2e10!4m2!3m1!1s0x808f7e37f0d196f9:0xcf2a7b909a94bfc3"
+    ]
+  },
+  {
+    "name": "R & G Lounge",
+    "location": { "latitude": 37.794115, "longitude": -122.40494199999999 },
+    "cost": 2,
+    "rating": 4.3,
+    "food_array": [
+      "https://www.google.com/maps/place//data=!3m4!1e2!3m2!1sAF1QipM35AfYPKC_acxZK-5fwXSUeQoEP7k1BjdW58P-!2e10!4m2!3m1!1s0x8085808b1bd80155:0x89a88d9eefd494cb",
+      "https://www.google.com/maps/place//data=!3m4!1e2!3m2!1sAF1QipOm52ynqRIa1Ka4O5zp5cq9ksnXlqpbwwqf8I7W!2e10!4m2!3m1!1s0x8085808b1bd80155:0x89a88d9eefd494cb",
+      "https://www.google.com/maps/place//data=!3m4!1e2!3m2!1sAF1QipN7Zw5imeG6Y5Mt86Y8Snkd1cTHG6Yi8-n4OewI!2e10!4m2!3m1!1s0x8085808b1bd80155:0x89a88d9eefd494cb",
+      "https://www.google.com/maps/place//data=!3m4!1e2!3m2!1sAF1QipP8ztowe_-X9hHtmEtKEqkPxPXX954U0BoLwXqH!2e10!4m2!3m1!1s0x8085808b1bd80155:0x89a88d9eefd494cb"
+    ]
+  },
+  {
+    "name": "Cotogna",
+    "location": { "latitude": 37.7974453, "longitude": -122.40357589999999 },
+    "cost": 3,
+    "rating": 4.5,
+    "food_array": [
+      "https://www.google.com/maps/place//data=!3m4!1e2!3m2!1sAF1QipNm6ihn1B6ql-jUIwlV_BtXHS172uCSJg8QUnNs!2e10!4m2!3m1!1s0x808580f5182f4603:0x355bdd340d9a7979"
+    ]
+  },
+  {
+    "name": "Wayfare Tavern",
+    "location": { "latitude": 37.7939998, "longitude": -122.40233749999999 },
+    "cost": 3,
+    "rating": 4.5,
+    "food_array": []
+  },
+  {
+    "name": "The Cheesecake Factory",
+    "location": { "latitude": 37.7872434, "longitude": -122.4074588 },
+    "cost": 2,
+    "rating": 3.8,
+    "food_array": [
+      "https://www.google.com/maps/place//data=!3m4!1e2!3m2!1sAF1QipMc3zx2VB0ZbtfauFZipTc3ETMumLL2xQR4Z3is!2e10!4m2!3m1!1s0x8085808f2be4e31b:0x2490fd459baf6ec5"
+    ]
+  },
+  {
+    "name": "McDonald's",
+    "location": { "latitude": 37.789217, "longitude": -122.407641 },
+    "cost": 1,
+    "rating": 3.8,
+    "food_array": [
+      "https://www.google.com/maps/place//data=!3m4!1e2!3m2!1sAF1QipN95mNePT-w8pvA1CL4QncCZNyeqT9fN7HIVawN!2e10!4m2!3m1!1s0x8085808eb701a845:0x2a73b983c8be2926",
+      "https://www.google.com/maps/place//data=!3m4!1e2!3m2!1sAF1QipNXtEVxnGVVt8JPUg9AiuMUFH0T6xUEznr4HhY3!2e10!4m2!3m1!1s0x8085808eb701a845:0x2a73b983c8be2926",
+      "https://www.google.com/maps/place//data=!3m4!1e2!3m2!1sAF1QipOVzE61nwY6rYkmqiRhYr5c8-nvC6J0P9Fx3acD!2e10!4m2!3m1!1s0x8085808eb701a845:0x2a73b983c8be2926",
+      "https://www.google.com/maps/place//data=!3m4!1e2!3m2!1sAF1QipMPz1zRGLliVQ7OHKFkfA4wfxgmPe9IwO738KjH!2e10!4m2!3m1!1s0x8085808eb701a845:0x2a73b983c8be2926",
+      "https://www.google.com/maps/place//data=!3m4!1e2!3m2!1sAF1QipNOi5pdNpFwp9NUQQYmqmLSKFvEgLvfdTY9Lzsn!2e10!4m2!3m1!1s0x8085808eb701a845:0x2a73b983c8be2926",
+      "https://www.google.com/maps/place//data=!3m4!1e2!3m2!1sAF1QipM1GxZXfp0gNjjIBbLr9qbgE2F2yOk0aID4K4r9!2e10!4m2!3m1!1s0x8085808eb701a845:0x2a73b983c8be2926",
+      "https://www.google.com/maps/place//data=!3m4!1e2!3m2!1sAF1QipOJoZNzLeHJNzl09r7yK8xAZYdgyhC07BaSpLaT!2e10!4m2!3m1!1s0x8085808eb701a845:0x2a73b983c8be2926"
+    ]
+  },
+  {
+    "name": "Harborview Restaurant & Bar",
+    "location": { "latitude": 37.7949371, "longitude": -122.39570610000001 },
+    "cost": 2,
+    "rating": 4.4,
+    "food_array": [
+      "https://www.google.com/maps/place//data=!3m4!1e2!3m2!1sAF1QipPSYDPWLV5VIzbZlAB87f1MXNs75KFF_c1eNuqQ!2e10!4m2!3m1!1s0x80858107118c5467:0xcae32ba3b82c8df1",
+      "https://www.google.com/maps/place//data=!3m4!1e2!3m2!1sAF1QipOvIHpth0vn-pR0CG7jtI5I2T8tCVdFKs_ogOGg!2e10!4m2!3m1!1s0x80858107118c5467:0xcae32ba3b82c8df1",
+      "https://www.google.com/maps/place//data=!3m4!1e2!3m2!1sAF1QipPOkmedB3gS0hcnD1M61cE4oJHw2kLp43j48D_V!2e10!4m2!3m1!1s0x80858107118c5467:0xcae32ba3b82c8df1",
+      "https://www.google.com/maps/place//data=!3m4!1e2!3m2!1sAF1QipNnnKQe4AXcGicFv6mXjJsc-ZLLnzq8unIcwQbI!2e10!4m2!3m1!1s0x80858107118c5467:0xcae32ba3b82c8df1",
+      "https://www.google.com/maps/place//data=!3m4!1e2!3m2!1sAF1QipP9Iy-QUPWKAwNdNi7wAtmQTyEO38r73azq9QW4!2e10!4m2!3m1!1s0x80858107118c5467:0xcae32ba3b82c8df1",
+      "https://www.google.com/maps/place//data=!3m4!1e2!3m2!1sAF1QipOaGn7-qNhBbespkDXgeVEE9zKGVW-OyCvlGtro!2e10!4m2!3m1!1s0x80858107118c5467:0xcae32ba3b82c8df1",
+      "https://www.google.com/maps/place//data=!3m4!1e2!3m2!1sAF1QipOzuDu87sdLYoLEzdyV6cHCNS97XKFmqNjsDH3n!2e10!4m2!3m1!1s0x80858107118c5467:0xcae32ba3b82c8df1",
+      "https://www.google.com/maps/place//data=!3m4!1e2!3m2!1sAF1QipMx0nLnuf2GMgS8E29o3D8yt2p0uvRP7E3D8IR_!2e10!4m2!3m1!1s0x80858107118c5467:0xcae32ba3b82c8df1"
+    ]
+  },
+  {
+    "name": "China Live",
+    "location": { "latitude": 37.7978556, "longitude": -122.4078833 },
+    "cost": 2,
+    "rating": 4.2,
+    "food_array": [
+      "https://www.google.com/maps/place//data=!3m4!1e2!3m2!1sAF1QipMKxsZehH4HKoFpkSv4DKVGy1WBZAh3neECqEUx!2e10!4m2!3m1!1s0x808580f3921752c7:0x47981c920350d730",
+      "https://www.google.com/maps/place//data=!3m4!1e2!3m2!1sAF1QipOJcK6PzUVYB4yHZh2wzOugz83vIx5ABuIgryGF!2e10!4m2!3m1!1s0x808580f3921752c7:0x47981c920350d730"
+    ]
+  },
+  {
+    "name": "Tropisueno",
+    "location": { "latitude": 37.7853583, "longitude": -122.40405 },
+    "cost": 2,
+    "rating": 4.3,
+    "food_array": [
+      "https://www.google.com/maps/place//data=!3m4!1e2!3m2!1sAF1QipMlNgJsqWMQqiFgGNRKY-ylR6X7XzDOXTJGBUKy!2e10!4m2!3m1!1s0x80858087cba5c67d:0x8ceb475a7cef8b48",
+      "https://www.google.com/maps/place//data=!3m4!1e2!3m2!1sAF1QipNCix_4wnVM9Zke9VcAv6kBDqLdvv12a5CazpqQ!2e10!4m2!3m1!1s0x80858087cba5c67d:0x8ceb475a7cef8b48",
+      "https://www.google.com/maps/place//data=!3m4!1e2!3m2!1sAF1QipOyZB9EvPmF8SOm5y_fLN96prmzv7SscTPuD8kk!2e10!4m2!3m1!1s0x80858087cba5c67d:0x8ceb475a7cef8b48",
+      "https://www.google.com/maps/place//data=!3m4!1e2!3m2!1sAF1QipNMe6suFPstddTRbWAjkDxiFS91R7SFKcjEK9EM!2e10!4m2!3m1!1s0x80858087cba5c67d:0x8ceb475a7cef8b48"
+    ]
+  }
+]
