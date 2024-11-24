@@ -1,5 +1,5 @@
 import { useEffect, useRef, useState } from "react";
-import { View } from "react-native";
+import { Alert, View } from "react-native";
 import DecisionButtons from "@/components/home/decision-buttons";
 import FoodPlane from "@/components/home/food-plane";
 import food from "../../assets/data/users2";
@@ -27,6 +27,8 @@ export default function HomeScreen() {
   }, []);
 
   const swiperRef = useRef<Swiper<any>>(null);
+
+  const [firstSwipe, setFirstSwipe] = useState(true);
 
   const handleSwipe = (direction: "left" | "right") => {
     if (!swiperRef.current) {
@@ -68,6 +70,13 @@ export default function HomeScreen() {
           stackSize={3}
           useViewOverflow={false}
           onSwiped={(cardIndex) => {
+            if (!user && firstSwipe) {
+              console.log("first swipe");
+              Alert.alert(
+                "Hi There!",
+                "Sign up to save your liked restaurants!"
+              );
+            }
             setRestaurantIndex((prev) => (prev + 1) % restaurants.length);
           }}
           onSwipedAll={() => {
@@ -79,7 +88,7 @@ export default function HomeScreen() {
               restos: restaurants[restaurantIndex].id,
               listname: "saved",
             };
-            console.log(data)
+            console.log(data);
             createMapRecord(data).then((resp) => console.log("resp", resp));
             getRestaurantsForUser(user.id).then((response) => {
               console.log("get", response);

@@ -1,33 +1,53 @@
-import { View, Text, Image, StyleSheet, FlatList , Dimensions} from 'react-native';
+import {
+  View,
+  Text,
+  Image,
+  StyleSheet,
+  FlatList,
+  Dimensions,
+} from "react-native";
 import { serverPlaceData } from "@/hooks/filterPlacesData";
-import { useLocalSearchParams } from "expo-router";
+import { useLocalSearchParams, useRouter } from "expo-router";
 import { useFocusEffect } from "expo-router";
-import React, {useState, useEffect} from "react";
-import data from  "@/assets/data/users";
-import { useAuth } from '../auth/auth-context';
-import { getFriendsForUser, getRestaurantById } from '@/api_call/db_calls';
+import React, { useState, useEffect } from "react";
+import data from "@/assets/data/users";
+import { useAuth } from "../auth/auth-context";
+import { getFriendsForUser, getRestaurantById } from "@/api_call/db_calls";
+import NotLoggedIn from "@/components/home/not-logged-in";
 
-export type friendsEntry = {id: Number, user_Id: Number, friend_id: Number};
-export type restoEntry = {id:Number, 
-  name: string, 
-  location: {latitude: Number,longitude:Number},
-  cost: Number, 
-  rating:Number, 
-  food_array: string[]};
+export type friendsEntry = { id: Number; user_Id: Number; friend_id: Number };
+export type restoEntry = {
+  id: Number;
+  name: string;
+  location: { latitude: Number; longitude: Number };
+  cost: Number;
+  rating: Number;
+  food_array: string[];
+};
 
-export default function Test(){
-  //const { user } = useAuth();
-  const user = 1
-    const [friendsList, setFriendsList] = useState([]);
-    useEffect(() => {
-      getFriendsForUser(user).then((data) => {
-        setFriendsList(data)
-        console.log("the friends list:", friendsList);
-      });
-    }, [])
-    console.log("the friends list:", friendsList);
-    // restosFriendsLike should be a map where the restaurant ids are the key and then we have 
-    /*const restosFriendsLike = new Map<Number, Number[]>();
+export default function Test() {
+  const { user } = useAuth();
+  const router = useRouter();
+  console.log("user", user);
+  useEffect(() => {
+    if (!user) {
+      router.push("/my-profile");
+    }
+  }, [user]);
+  if (!user) {
+    return <NotLoggedIn />;
+  }
+  //const user = 1;
+  const [friendsList, setFriendsList] = useState([]);
+  useEffect(() => {
+    getFriendsForUser(user).then((data) => {
+      setFriendsList(data);
+      console.log("the friends list:", friendsList);
+    });
+  }, []);
+  console.log("the friends list:", friendsList);
+  // restosFriendsLike should be a map where the restaurant ids are the key and then we have
+  /*const restosFriendsLike = new Map<Number, Number[]>();
     for (let friendEntry of friendsList){
       let tmp = (friendEntry as friendsEntry);
       let response = await getRestaurantById(tmp.friend_id);
@@ -56,40 +76,40 @@ export default function Test(){
       };
     }, [])
   );*/
-const windowWidth = Dimensions.get('window').width;
-const styles = StyleSheet.create({
-  listContainer: {
-    padding: 10,
-    marginTop: 10
-  },
-  itemContainer: {
-    flexDirection: 'row',
-    alignItems: 'center',
-    marginBottom: 10,
-    backgroundColor: '#f9f9f9',
-    padding: 10,
-    borderRadius: 8,
-    borderWidth: 1,
-    borderColor: '#ddd',
-    width: windowWidth*0.90
-  },
-  header: {
-    fontSize: 22,
-    fontWeight: 'bold',
-    marginBottom: 10,
-    alignSelf: 'center',
-  },
-  icon: {
-    width: 40,
-    height: 40,
-    borderRadius: 20,
-    marginRight: 10,
-  },
-  name: {
-    fontSize: 16,
-    fontWeight: '500',
-  },
-});
+  const windowWidth = Dimensions.get("window").width;
+  const styles = StyleSheet.create({
+    listContainer: {
+      padding: 10,
+      marginTop: 10,
+    },
+    itemContainer: {
+      flexDirection: "row",
+      alignItems: "center",
+      marginBottom: 10,
+      backgroundColor: "#f9f9f9",
+      padding: 10,
+      borderRadius: 8,
+      borderWidth: 1,
+      borderColor: "#ddd",
+      width: windowWidth * 0.9,
+    },
+    header: {
+      fontSize: 22,
+      fontWeight: "bold",
+      marginBottom: 10,
+      alignSelf: "center",
+    },
+    icon: {
+      width: 40,
+      height: 40,
+      borderRadius: 20,
+      marginRight: 10,
+    },
+    name: {
+      fontSize: 16,
+      fontWeight: "500",
+    },
+  });
 
   let placeData = data;
   // return (
@@ -113,7 +133,6 @@ const styles = StyleSheet.create({
   return (
     //<Text>{JSON.stringify(friendsList)}</Text>
     <Text>Hello</Text>
-
   );
 }
 //Test();

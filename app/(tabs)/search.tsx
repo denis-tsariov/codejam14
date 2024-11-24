@@ -4,6 +4,7 @@ import {
   Text,
   ScrollView,
   Pressable,
+  TextInput,
 } from "react-native";
 import { useAuth } from "../auth/auth-context";
 import React, { useEffect, useState } from "react";
@@ -11,12 +12,22 @@ import { Searchbar } from "react-native-paper";
 import { getFriendsForUser, getUsers } from "../../api_call/db_calls.js";
 import { User } from "lucide-react-native";
 import { make_friend } from "../../api_call/db_calls";
+import { useRouter } from "expo-router";
+import NotLoggedIn from "@/components/home/not-logged-in";
 
 export default function TabTwoScreen() {
   const { user } = useAuth();
   const [search, setSearch] = useState("");
   const [filteredData, setFilteredData] = useState([]);
   const [data, setData] = useState([]);
+
+  const router = useRouter();
+  console.log("user", user);
+  useEffect(() => {
+    if (!user) {
+      router.push("/my-profile");
+    }
+  }, [user]);
 
   const updateSearch = (value: React.SetStateAction<string>) => {
     console.log(data)
@@ -62,6 +73,10 @@ export default function TabTwoScreen() {
     });
   }, []);
 
+  if (!user) {
+    return <NotLoggedIn />;
+  }
+
   return (
     <ScrollView
       style={{
@@ -76,7 +91,7 @@ export default function TabTwoScreen() {
     >
       {user ? (
         <View style={{ flex: 1, gap: 20, paddingBottom: 100 }}>
-          <Searchbar
+          <TextInput
             placeholder="Search..."
             onChangeText={updateSearch}
             value={search}
@@ -92,7 +107,7 @@ export default function TabTwoScreen() {
                 alignItems: "center",
                 justifyContent: "space-between",
                 paddingRight: 20,
-                paddingLeft: 20
+                paddingLeft: 20,
               }}
               onPress={() => handlePress(friend)}
             >
@@ -105,7 +120,9 @@ export default function TabTwoScreen() {
                 }}
               >
                 <User color={"black"} />
-                <Text style={{ fontSize: 18 }}>{friend.username}</Text>
+                <Text style={{ fontSize: 18, fontWeight: "600" }}>
+                  {friend.username}
+                </Text>
               </View>
               {(friend.relationship == "not friend") && <Pressable
                 className="border-2"
@@ -120,7 +137,7 @@ export default function TabTwoScreen() {
                     user_id: user.id,
                     friend_id: friend.id,
                   };
-                  console.log("follow pressed", data)
+                  console.log("follow pressed", data);
                   make_friend(data).then((resp) => console.log("resp", resp));
                 }}
               >
@@ -131,7 +148,14 @@ export default function TabTwoScreen() {
                     justifyContent: "center",
                   }}
                 >
-                  <Text style={{ color: "white", fontSize: 16, textAlign:"center" }}>
+                  <Text
+                    style={{
+                      color: "white",
+                      fontSize: 16,
+                      textAlign: "center",
+                      fontWeight: "600",
+                    }}
+                  >
                     follow
                   </Text>
                 </View>
@@ -140,7 +164,7 @@ export default function TabTwoScreen() {
           ))}
         </View>
       ) : (
-        <Text>Please Log in to use this feature !</Text>
+        <NotLoggedIn />
       )}
     </ScrollView>
   );
@@ -154,11 +178,13 @@ const styles = StyleSheet.create({
   },
   searchBar: {
     height: 50,
-    borderWidth: 1,
-    borderColor: "#ccc",
-    borderRadius: 5,
+    borderWidth: 2,
+    borderColor: "#000000",
+    borderRadius: 12,
+    borderTopLeftRadius: 12,
+    borderTopRightRadius: 12,
     paddingHorizontal: 10,
-    marginBottom: 20,
+    backgroundColor: "white",
   },
   item: {
     padding: 15,
