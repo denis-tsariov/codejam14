@@ -101,6 +101,19 @@ export const getCommonRestaurants = async (user1_id, user2_id) => {
   }
 };
 
+//get the list of friends of a user
+export const getFriends = async (user1_id) => {
+  try {
+    const response = await axios.get(`${BASE_URL}/getFriends/`, {
+      params: { user1_id}
+    })
+    return response.data
+  } catch(error) {
+      console.error("Error fetching Friends", error);
+      throw error;
+  }
+}
+
 // function to get a list of restaurants for a certain user from the maps table
 export const getRestaurantsForUser = async (user_id) => {
   try {
@@ -134,18 +147,20 @@ export const getUserByUsername = async (username) => {
 
 // export all functions as a module
 export default {
-  getRestaurants,
-  getRestaurantsWithPagination,
-  getRestaurantById,
-  getRestaurantFoodImages,
-  addMapRecord,
-  updateMapRecord,
-  deleteMapRecord,
-  getCommonRestaurants,
-  getRestaurantsForUser,
-  getUsers,
-  getUserByUsername,
-};
+    getRestaurants,
+    getRestaurantsWithPagination,
+    getRestaurantById,
+    getRestaurantFoodImages,
+    addMapRecord, 
+    updateMapRecord,
+    deleteMapRecord, 
+    getCommonRestaurants, 
+    getRestaurantsForUser, 
+    getUsers, 
+    getUserByUsername,
+    getFriends
+  };
+
 
 /*
 functions we need:
