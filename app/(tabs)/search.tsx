@@ -2,15 +2,13 @@ import {
   StyleSheet,
   View,
   Text,
-  Button,
-  Alert,
   ScrollView,
   Pressable,
 } from "react-native";
 import { useAuth } from "../auth/auth-context";
 import React, { useEffect, useState } from "react";
 import { Searchbar } from "react-native-paper";
-import { getUsers } from "../../api_call/db_calls.js";
+import { getFriendsForUser, getUsers } from "../../api_call/db_calls.js";
 import { User } from "lucide-react-native";
 import { make_friend } from "../../api_call/db_calls";
 
@@ -19,10 +17,10 @@ export default function TabTwoScreen() {
   const [search, setSearch] = useState("");
   const [filteredData, setFilteredData] = useState([]);
   const [data, setData] = useState([]);
-  const [selectedUser, setSelectedUser] = useState({});
-  const [modalOpen, setModalOpen] = useState(false);
 
   const updateSearch = (value: React.SetStateAction<string>) => {
+    console.log(data)
+    getFriendsForUser(user!.id).then((isFriend) => {console.log("friends", isFriend)})
     setSearch(value);
 
     if (value) {
@@ -35,8 +33,8 @@ export default function TabTwoScreen() {
     }
   };
 
+
   const handlePress = (user: User) => {
-    setSelectedUser(user);
   };
 
   type User = {
@@ -47,8 +45,20 @@ export default function TabTwoScreen() {
 
   useEffect(() => {
     getUsers().then((data) => {
-      setFilteredData(data);
       setData(data);
+      getFriendsForUser(user!.id).then((isFriend) => {
+        console.log("friends", data);
+        setData(data.map((item: User) => ({
+          ...item,
+          relationship: (
+            isFriend.some((friend: any) => friend.friend_id.toString() === user!.id) ? 
+              "self" : 
+              (isFriend.some((friend: any) => friend.friend_id === item.id) ? 
+                "friend" : 
+                "not friend")),
+        })));
+        setFilteredData(data);
+      });
     });
   }, []);
 
@@ -72,7 +82,7 @@ export default function TabTwoScreen() {
             value={search}
             style={styles.searchBar}
           />
-          {filteredData.map((friend: User, key) => (
+          {filteredData.map((friend: any, key) => (
             <Pressable
               key={key}
               className="h-20 border-2 rounded-xl"
@@ -97,7 +107,7 @@ export default function TabTwoScreen() {
                 <User color={"black"} />
                 <Text style={{ fontSize: 18 }}>{friend.username}</Text>
               </View>
-              <Pressable
+              {(friend.relationship == "not friend") && <Pressable
                 className="border-2"
                 style={{
                   width: 80,
@@ -125,7 +135,7 @@ export default function TabTwoScreen() {
                     follow
                   </Text>
                 </View>
-              </Pressable>
+              </Pressable>}
             </Pressable>
           ))}
         </View>
