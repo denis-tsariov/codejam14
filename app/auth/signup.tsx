@@ -9,6 +9,7 @@ import {
   StyleSheet,
   KeyboardAvoidingView,
   Platform,
+  TouchableOpacity,
 } from "react-native";
 import axios from "axios";
 
@@ -62,6 +63,7 @@ export default function SignUpForm() {
       behavior={Platform.OS === "ios" ? "padding" : "height"}
       style={styles.container}
     >
+      <Text style={styles.welcome}>Create Account</Text>
       <Text style={styles.title}>Sign Up</Text>
 
       <TextInput
@@ -87,7 +89,9 @@ export default function SignUpForm() {
         onChangeText={setPassword}
       />
 
-      <Button title="Sign Up" onPress={handleSignUp} />
+      <TouchableOpacity style={styles.squareButton} onPress={handleSignUp} >
+        <Text style={styles.buttonText}>Sign Up</Text>
+      </TouchableOpacity>
     </KeyboardAvoidingView>
   );
 }
@@ -101,15 +105,36 @@ const styles = StyleSheet.create({
   },
   title: {
     fontSize: 24,
-    fontWeight: "bold",
-    marginBottom: 20,
+    marginBottom: 50,
   },
   input: {
-    width: "100%",
+    width: "90%",
+    height: 45,
     borderWidth: 1,
     borderColor: "#ccc",
     borderRadius: 5,
     padding: 10,
     marginBottom: 15,
+  },
+  welcome: {
+    fontSize: 26,
+    fontWeight: "bold",
+    marginBottom: 5,
+  },
+  squareButton: {
+    width: 100, // Set width and height to make it square
+    height: 50,
+    borderWidth: 2,
+    borderColor: "#000", // Black border color
+    borderRadius: 10, // Rounded corners
+    justifyContent: "center",
+    alignItems: "center",
+    backgroundColor: "transparent", // Transparent background
+    marginBottom: 15, // Add some spacing between buttons
+    marginTop: 30,
+  },
+  buttonText: {
+    fontSize: 16,
+    fontWeight: "bold",
   },
 });

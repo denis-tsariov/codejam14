@@ -82,7 +82,6 @@ export default function Modal() {
         onChangeText={setPassword}
       />
 
-      {/* <Button title="Log In" onPress={handleLogIn} /> */}
       <TouchableOpacity style={styles.squareButton} onPress={handleLogIn} >
         <Text style={styles.buttonText}>Log In</Text>
       </TouchableOpacity>
@@ -99,7 +98,7 @@ const styles = StyleSheet.create({
   },
   title: {
     fontSize: 24,
-    marginBottom: 20,
+    marginBottom: 50,
   },
   input: {
     width: "90%",
@@ -125,6 +124,7 @@ const styles = StyleSheet.create({
     alignItems: "center",
     backgroundColor: "transparent", // Transparent background
     marginBottom: 15, // Add some spacing between buttons
+    marginTop: 30,
   },
   buttonText: {
     fontSize: 16,

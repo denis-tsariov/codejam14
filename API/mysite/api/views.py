@@ -2,8 +2,8 @@ from django.shortcuts import render
 from django.http import JsonResponse
 from rest_framework import generics, status
 from rest_framework.response import Response
-from .models import Restaurants, Maps
-from .serializers import RestaurantsSerializer, MapsSerializer, UserSerializer
+from .models import Restaurants, Maps, UserrFriends
+from .serializers import RestaurantsSerializer, MapsSerializer, UserSerializer, FriendSerializer
 from rest_framework.views import APIView
 from rest_framework.decorators import api_view, authentication_classes, permission_classes
 from rest_framework.authentication import SessionAuthentication, TokenAuthentication
@@ -17,10 +17,36 @@ class AllList(APIView):
     def get(self, request, format=None):
         all_list = {
             "restaurants": "/api/restaurants/",
-            "maps": "/api/maps/"
+            "maps": "/api/maps/",
+            "users": "/api/users/",
+            "...": "..."
         }
         return Response(all_list, status=status.HTTP_200_OK)
 
+class FriendsListCreate(generics.ListCreateAPIView):
+    queryset = UserrFriends.objects.all()
+    serializer_class = FriendSerializer
+
+    def delete(self, request, *args, **kwargs):
+        UserrFriends.objects.all().delete()
+        return Response(status=status.HTTP_204_NO_CONTENT)
+    
+class FriendsRetrieveUpdateDestroy(generics.RetrieveUpdateDestroyAPIView):
+    queryset = UserrFriends.objects.all()
+    serializer_class = FriendSerializer
+    lookup_field = "pk"
+
+class FriendsList(APIView):
+    def get(self, request, format=None):
+        user_id = request.query_params.get("user_id")
+        if not user_id:
+            return Response(
+                {"error": "user_id is required"},
+                status=status.HTTP_400_BAD_REQUEST
+            )
+        friends = UserrFriends.objects.filter(user_id=user_id)
+        serializer = FriendSerializer(friends, many=True)
+        return Response(serializer.data, status=status.HTTP_200_OK)
 
 class RestaurantsListCreate(generics.ListCreateAPIView):
     queryset = Restaurants.objects.all()

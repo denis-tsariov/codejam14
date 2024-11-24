@@ -20,12 +20,13 @@ class Maps(models.Model):
     listname = models.CharField(max_length=100)
     restos = models.ForeignKey(Restaurants, on_delete=models.CASCADE)
     user_id = models.ForeignKey(User, on_delete=models.CASCADE)  
-    #image_link = models.CharField(max_length=100, blank=True) 
 
-    """
-    class Meta:
-        ordering = ["listname"]
-    """    
+class UserrFriends(models.Model):
+    user_id = models.ForeignKey(User, on_delete=models.CASCADE)
+    friend_id = models.IntegerField()
+    
+
+  
 
     def __str__(self):
         return self.name

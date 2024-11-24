@@ -8,6 +8,16 @@ urlpatterns = [
         name="all-list"
     ),
     path(
+        "friends/", 
+        views.FriendsListCreate.as_view(),
+        name="friends-list-create"
+    ),
+    path(
+        "friends/<int:pk>/",
+        views.FriendsRetrieveUpdateDestroy.as_view(),
+        name="friends-update"
+    ),
+    path(
         "user/", 
         views.UserList.as_view(),
         name="user-list-create"
