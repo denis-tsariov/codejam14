@@ -1,4 +1,4 @@
-import { Link, router } from "expo-router";
+import { Link, router, useRouter } from "expo-router";
 import React, { useState } from "react";
 import {
   View,
@@ -13,14 +13,16 @@ import {
 } from "react-native";
 import axios from "axios";
 
-const BASE_URL = 'http://127.0.0.1:8000';
-const BASE_URL2 = 'http://10.0.2.2:8000';
+const BASE_URL = "http://127.0.0.1:8000";
+const BASE_URL2 = "http://10.0.2.2:8000";
 
 export default function SignUpForm() {
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const url = `${BASE_URL}/signup`;
+
+  const router = useRouter();
 
   const handleSignUp = async () => {
     if (!name || !email || !password) {
@@ -46,6 +48,7 @@ export default function SignUpForm() {
           } else if (response.data.email) {
             Alert.alert("Please enter a valid email address!");
           } else {
+            router.push("/(tabs)");
             Alert.alert("Success", `Welcome, ${response.data.user.username}!`);
           }
           // Handle successful response, e.g., navigate to a new screen
@@ -89,7 +92,7 @@ export default function SignUpForm() {
         onChangeText={setPassword}
       />
 
-      <TouchableOpacity style={styles.squareButton} onPress={handleSignUp} >
+      <TouchableOpacity style={styles.squareButton} onPress={handleSignUp}>
         <Text style={styles.buttonText}>Sign Up</Text>
       </TouchableOpacity>
     </KeyboardAvoidingView>
