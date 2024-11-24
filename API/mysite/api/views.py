@@ -28,7 +28,10 @@ class FriendsListCreate(generics.ListCreateAPIView):
     serializer_class = FriendSerializer
 
     def delete(self, request, *args, **kwargs):
-        UserrFriends.objects.all().delete()
+        # remove from UserrFriends table, find the row with the user_id and friend_id
+        UserrFriends.objects.filter(user_id=request.data['user_id'], friend_id=request.data['friend_id']).delete()
+
+        #UserrFriends.objects.all().delete()
         return Response(status=status.HTTP_204_NO_CONTENT)
     
 class FriendsRetrieveUpdateDestroy(generics.RetrieveUpdateDestroyAPIView):

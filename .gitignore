@@ -42,3 +42,6 @@ bun.lockb
 
 db.sqlite3
 ios
+
+#API migrations
+migrations

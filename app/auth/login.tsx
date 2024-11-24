@@ -47,7 +47,7 @@ export default function Modal() {
           .then(function (validationResponse) {
             Alert.alert("Successfully logged in !");
             setUser(validationResponse.data)
-          })
+          }) // Handle successful response, navigate to the profile screen
           .catch(function (error) {
             console.log(error);
           });
