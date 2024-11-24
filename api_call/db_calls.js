@@ -169,6 +169,10 @@ export const make_friend = async (data) => {
   return await postData("friends/add_friend", data);
 }
 
+export const delete_friend = async (data) => {
+  return await deleteData("friends/delete_friend", data);
+}
+
 // export all functions as a module
 export default {
     getRestaurants,
@@ -185,7 +189,8 @@ export default {
     getFriends, 
     createMapRecord,
     getFriendsForUser, 
-    make_friend
+    make_friend, 
+    delete_friend
   };
 
 

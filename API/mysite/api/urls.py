@@ -65,6 +65,7 @@ urlpatterns = [
         ),
     re_path('add_resto_to_map', views.add_restaurant_to_map),
     re_path('add_friend', views.add_friend),
+    re_path('delete_friend', views.delete_friend),
     re_path('get_friend_list_for_user', views.get_friends),
     re_path('login', views.login),
     re_path('signup', views.signup),
