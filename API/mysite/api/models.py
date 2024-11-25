@@ -1,8 +1,6 @@
 from django.db import models
 from django.contrib.auth.models import User 
 
-# Create your models here.
-
 class Restaurants(models.Model):
     PRICE_LEVEL = (
         (0, 'Free'),
@@ -20,11 +18,8 @@ class Maps(models.Model):
     listname = models.CharField(max_length=100)
     restos = models.IntegerField()
     user_id = models.IntegerField()
-    #restos = models.ForeignKey(Restaurants, on_delete=models.CASCADE)
-    #user_id = models.ForeignKey(User, on_delete=models.CASCADE)  
 
 class UserrFriends(models.Model):
-    #user_id = models.ForeignKey(User, on_delete=models.CASCADE)
     user_id = models.IntegerField()
     friend_id = models.IntegerField()
     

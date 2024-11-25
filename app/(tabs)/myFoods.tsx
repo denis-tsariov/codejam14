@@ -66,20 +66,6 @@ export default function Test() {
 
   // display the user's liked restaurants
   return (
-    // <View style={styles.container}>
-    //     <FlatList
-    //         data={userRestaurants}
-    //         renderItem={({item}) => (
-    //             <View style={styles.item}>
-    //                 {/* <Text>{item.name}</Text>
-    //                 <Text>{item.location.latitude}, {item.location.longitude.toString()}</Text>
-    //                 <Text>{item.cost}</Text>
-    //                 <Text>{item.rating}</Text>
-    //                 <Text>{item.food_array}</Text> */}
-    //             </View>
-    //         )}
-    //     />
-    // </View>
     <ScrollView
       style={{
         position: "absolute",

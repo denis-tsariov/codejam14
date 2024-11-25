@@ -35,7 +35,7 @@ export default function MyProfile() {
           <View style={styles.profileContainer}>
             <View style={styles.logo} />
           </View>
-          <Text style={styles.welcome}>Welcome to APP</Text>
+          <Text style={styles.welcome}>Welcome to MealMates</Text>
 
           {/* Login Button */}
           <TouchableOpacity style={styles.squareButton2}>

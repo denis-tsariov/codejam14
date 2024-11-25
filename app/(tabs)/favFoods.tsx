@@ -15,9 +15,6 @@ import React, { useState, useEffect } from "react";
 import data from "@/assets/data/users";
 import { useAuth } from "../auth/auth-context";
 import {
-  getFriendsForUser,
-  getRestaurantById,
-  getRestaurants,
   getRestaurantsForUser,
 } from "@/api_call/db_calls";
 import NotLoggedIn from "@/components/home/not-logged-in";
