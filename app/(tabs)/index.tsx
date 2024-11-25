@@ -86,6 +86,7 @@ export default function HomeScreen() {
                 "Hi There!",
                 "Sign up to save your liked restaurants!"
               );
+              setFirstSwipe(false);
             }
             setRestaurantIndex((prev) => (prev + 1) % restaurants.length);
           }}

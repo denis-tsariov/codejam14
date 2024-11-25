@@ -23,9 +23,10 @@ const FoodPlane = ({ restaurant }: any) => {
       >
         {restaurant.name}
       </Text>
-      <Text className="absolute px-4 top-[38rem] h-20 text-white truncate shadow-md flex flex-col">
-        {/* <Text>{restaurant.cost}</Text> */}
-        <Text>{restaurant.rating}</Text>
+      <Text className="absolute px-4 top-[38rem] h-20 text-white truncate shadow-md flex flex-col font-semibold text-xl">
+        <Text>
+          {"$".repeat(restaurant.cost) + " | " + restaurant.rating + " ⭐️"}
+        </Text>
       </Text>
     </Pressable>
   );
