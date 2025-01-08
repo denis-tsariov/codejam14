@@ -100,7 +100,7 @@ Built with ❤️ during CodeJam14 by:
 - David Nitchi
 - Greta Zu
 - Max Fong
-- Denis Tsariov
+- Denis Tsariov [Github](https://github.com/denis-tsariov);  [Linkedin](https://www.linkedin.com/in/denis-tsariov-878676254/)
 
 ## Contributing 🤝
 
