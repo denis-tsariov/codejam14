@@ -1,50 +1,117 @@
-# Welcome to your Expo app 👋
+# MealMates 🍽️
 
-This is an [Expo](https://expo.dev) project created with [`create-expo-app`](https://www.npmjs.com/package/create-expo-app).
+MealMates is a mobile application that helps you discover Montreal's vibrant food scene and connect with friends over shared culinary interests. Think Tinder, but for restaurants - swipe through local eateries and match with friends who share your taste!
 
-## Get started
+## Features ✨
 
-1. Install dependencies
+- **Restaurant Discovery**: Swipe through curated restaurant images from Montreal's finest establishments
+- **Smart Matching**: Get notified when you and your friends like the same restaurants
+- **Social Connection**: Follow friends and discover mutual dining interests
+- **Personal Collections**: Keep track of restaurants you're interested in visiting
+- **Restaurant Details**: View pricing, ratings, and other essential information for each venue
 
-   ```bash
-   npm install
-   ```
+## Screenshots 📱
 
-2. Start the app
+![main swipe page](https://github.com/denis-tsariov/codejam14/screenshots/swipe-page.png?raw=true)
+![new match](https://github.com/denis-tsariov/codejam14/screenshots/new-match.png?raw=true)
+![my likes image](https://github.com/denis-tsariov/codejam14/screenshots/my-likes.png?raw=true)
 
-   ```bash
-    npx expo start
-   ```
+You can find a video of the app in action [here][website]
 
-In the output, you'll find options to open the app in a
+[website]: https://www.youtube.com/watch?v=2nAD9EJrNGw
 
-- [development build](https://docs.expo.dev/develop/development-builds/introduction/)
-- [Android emulator](https://docs.expo.dev/workflow/android-studio-emulator/)
-- [iOS simulator](https://docs.expo.dev/workflow/ios-simulator/)
-- [Expo Go](https://expo.dev/go), a limited sandbox for trying out app development with Expo
+## Tech Stack 🛠️
 
-You can start developing by editing the files inside the **app** directory. This project uses [file-based routing](https://docs.expo.dev/router/introduction).
+### Frontend
+- React Native
+- TypeScript
+- NativeWind (Tailwind CSS for React Native)
+- Expo.io
 
-## Get a fresh project
+### Backend
+- Django REST Framework
+- SQLite
+- Google Maps API
 
-When you're ready, run:
+<!-- ## Installation 🚀
 
+1. Clone the repository
 ```bash
-npm run reset-project
+git clone https://github.com/yourusername/mealmates.git
 ```
 
-This command will move the starter code to the **app-example** directory and create a blank **app** directory where you can start developing.
+2. Install frontend dependencies
+```bash
+cd mealmates/frontend
+npm install
+```
 
-## Learn more
+3. Install backend dependencies
+```bash
+cd mealmates/backend
+pip install -r requirements.txt
+```
 
-To learn more about developing your project with Expo, look at the following resources:
+4. Set up environment variables
+```bash
+# Create a .env file in the backend directory with:
+GOOGLE_MAPS_API_KEY=your_api_key
+```
 
-- [Expo documentation](https://docs.expo.dev/): Learn fundamentals, or go into advanced topics with our [guides](https://docs.expo.dev/guides).
-- [Learn Expo tutorial](https://docs.expo.dev/tutorial/introduction/): Follow a step-by-step tutorial where you'll create a project that runs on Android, iOS, and the web.
+5. Run the development servers
+```bash
+# Backend
+python manage.py runserver
 
-## Join the community
+# Frontend
+npm start
+```
 
-Join our community of developers creating universal apps.
+## Project Structure 📁
 
-- [Expo on GitHub](https://github.com/expo/expo): View our open source platform and contribute.
-- [Discord community](https://chat.expo.dev): Chat with Expo users and ask questions.
+```
+mealmates/
+├── frontend/          # React Native application
+│   ├── components/    # Reusable UI components
+│   ├── screens/       # Application screens
+│   └── services/      # API integration
+├── backend/           # Django REST API
+│   ├── api/          # API endpoints
+│   ├── models/       # Database models
+│   └── services/     # Business logic
+``` -->
+
+## APIs and Services 🔌
+
+- **Google Maps API**: Used for restaurant data and images
+- **Custom REST API**: Handles user authentication, restaurant matching, and social features
+
+## Future Improvements 🚀
+
+- Expand restaurant database beyond Montreal
+- Implement an interactive map view of liked restaurants
+- Enhanced restaurant recommendation algorithm
+- Real-time notifications for matches
+- Group matching for larger parties
+
+## Team 👥
+
+Built with ❤️ during CodeJam14 by:
+- David Nitchi
+- Greta Zu
+- Max Fong
+- Denis Tsariov
+
+## Contributing 🤝
+
+We welcome contributions to MealMates! Please feel free to submit issues and pull requests.
+
+1. Fork the repository
+2. Create your feature branch (`git checkout -b feature/AmazingFeature`)
+3. Commit your changes (`git commit -m 'Add some AmazingFeature'`)
+4. Push to the branch (`git push origin feature/AmazingFeature`)
+5. Open a Pull Request
+
+<!-- ## License 📝
+
+This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details. -->

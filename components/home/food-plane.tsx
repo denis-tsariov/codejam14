@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { Image, Pressable, Text, View } from "react-native";
+import { Image, Pressable, Text, View, StyleSheet } from "react-native";
 
 const FoodPlane = ({ restaurant }: any) => {
   const [imageIndex, setImageIndex] = useState(0);
@@ -19,11 +19,14 @@ const FoodPlane = ({ restaurant }: any) => {
       />
       <Text
         className="absolute text-4xl font-semibold bottom-0 pb-20 px-4 text-white w-full shadow-ms"
-        style={{ backgroundImage: "linear-gradient(red, yellow)" }}
+        style={styles.restaurantName}
       >
         {restaurant.name}
       </Text>
-      <Text className="absolute px-4 top-[38rem] h-20 text-white truncate shadow-md flex flex-col font-semibold text-xl">
+      <Text
+        className="absolute px-4 top-[38rem] h-20 text-white truncate shadow-md flex flex-col font-semibold text-xl"
+        style={styles.ratingText}
+      >
         <Text>
           {"$".repeat(restaurant.cost) + " | " + restaurant.rating + " ⭐️"}
         </Text>
@@ -33,3 +36,16 @@ const FoodPlane = ({ restaurant }: any) => {
 };
 
 export default FoodPlane;
+
+const styles = StyleSheet.create({
+  restaurantName: {
+    textShadowColor: "rgba(0, 0, 0, 0.75)",
+    textShadowOffset: { width: -1, height: 1 },
+    textShadowRadius: 10,
+  },
+  ratingText: {
+    textShadowColor: "rgba(0, 0, 0, 0.75)",
+    textShadowOffset: { width: -1, height: 1 },
+    textShadowRadius: 10,
+  },
+});
