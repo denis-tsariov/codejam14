@@ -12,9 +12,9 @@ MealMates is a mobile application that helps you discover Montreal's vibrant foo
 
 ## Screenshots 📱
 
-![main swipe page](https://github.com/denis-tsariov/codejam14/screenshots/swipe-page.png?raw=true)
-![new match](https://github.com/denis-tsariov/codejam14/screenshots/new-match.png?raw=true)
-![my likes image](https://github.com/denis-tsariov/codejam14/screenshots/my-likes.png?raw=true)
+![main swipe page](https://github.com/denis-tsariov/codejam14/blob/main/screenshots/swipe-page.png?raw=true)
+![new match](https://github.com/denis-tsariov/codejam14/blob/main/screenshots/new-match.png?raw=true)
+![my likes image](https://github.com/denis-tsariov/codejam14/blob/main/screenshots/my-likes.png?raw=true)
 
 You can find a video of the app in action [here][website]
 
